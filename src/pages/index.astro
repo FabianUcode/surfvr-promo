@@ -8,8 +8,7 @@ import {
   BEACHES,
   BOARDS,
   SHOPS,
-  GALLERY_SHOTS,
-  PAINT_COLORS
+  GALLERY_SHOTS
 } from '../data/surfvr';
 ---
 
@@ -17,7 +16,7 @@ import {
   <Navbar />
 
   <!-- =====================================================================
-       HERO + ZONA DE DESCARGAS OFICIAL (MOBILE-FIRST)
+       HERO + ZONA DE DESCARGAS OFICIAL (LCP OPTIMIZADO)
        ===================================================================== -->
   <header id="inicio" class="hero">
     <div class="container">
@@ -34,8 +33,8 @@ import {
           <div class="smart-device-cta" id="smart-device-cta">
             <a href="#descargar" class="smart-cta-btn" id="smart-device-link">
               <div>
-                <div style="font-size:0.68rem; font-weight:800; color:var(--aqua); text-transform:uppercase; letter-spacing:0.08em;">RECOMENDADO PARA TU DISPOSITIVO</div>
-                <div id="smart-device-title" style="font-size:1.05rem; font-weight:800; color:#fff;">Descargar SurfVR</div>
+                <div style="font-size:0.68rem; font-weight:800; color:var(--sea); text-transform:uppercase; letter-spacing:0.08em;">RECOMENDADO PARA TU DISPOSITIVO</div>
+                <div id="smart-device-title" style="font-size:1.02rem; font-weight:800; color:#fff;">Descargar SurfVR</div>
               </div>
               <span class="badge badge-aqua" id="smart-device-badge">Instalar →</span>
             </a>
@@ -46,12 +45,21 @@ import {
           <DownloadGrid />
         </div>
 
-        <!-- Hero Visual Showcase -->
+        <!-- Hero Visual Showcase (LCP Target) -->
         <div class="hero-showcase">
           <div class="hero-frame" id="hero-open-lightbox">
-            <img id="hero-img" src={HERO_SHOTS[0].src} alt="SurfVR en el tubo" />
-            <div class="hud-pill top" id="hero-pill-top">{HERO_SHOTS[0].topHud}</div>
-            <div class="hud-pill bottom" id="hero-pill-bot">{HERO_SHOTS[0].botHud}</div>
+            <img
+              id="hero-img"
+              src={HERO_SHOTS[0].src}
+              alt="SurfVR en el tubo"
+              width="1280"
+              height="720"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="hud-pill top" id="hero-hud-top">{HERO_SHOTS[0].topHud}</div>
+            <div class="hud-pill bottom" id="hero-hud-bot">{HERO_SHOTS[0].botHud}</div>
           </div>
 
           <div class="hero-strip">
@@ -62,7 +70,14 @@ import {
                 data-top={shot.topHud}
                 data-bot={shot.botHud}
               >
-                <img src={shot.src} alt={shot.label} loading="lazy" />
+                <img
+                  src={shot.src}
+                  alt={shot.label}
+                  width="320"
+                  height="180"
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
                 <span>{shot.label}</span>
               </button>
             ))}
@@ -92,7 +107,15 @@ import {
       <div class="highlights-grid" id="highlights-carousel">
         {HIGHLIGHTS.map((item) => (
           <div class="glass-card highlight-card">
-            <img src={item.img} alt={item.title} data-lightbox={item.caption} loading="lazy" />
+            <img
+              src={item.img}
+              alt={item.title}
+              width="640"
+              height="360"
+              data-lightbox={item.caption}
+              loading="lazy"
+              decoding="async"
+            />
             <span class={`badge ${item.badgeClass}`} style="align-self:flex-start;">{item.badge}</span>
             <h3>{item.title}</h3>
             <p style="color:var(--text-secondary); font-size:0.93rem;">{item.desc}</p>
@@ -140,7 +163,7 @@ import {
           <!-- Simulador Interactivo de Misiones -->
           <div class="mission-box">
             <div class="mission-header">
-              <span style="font-size:0.75rem; font-weight:800; color:var(--aqua);">DESAFÍOS DEL SALVAVIDAS (¡TOCA PARA COMPLETAR!)</span>
+              <span style="font-size:0.75rem; font-weight:800; color:var(--sea);">DESAFÍOS DEL SALVAVIDAS (¡TOCA PARA COMPLETAR!)</span>
               <div class="tier-pills">
                 <button class="tier-btn active" data-tier="easy">Fácil · $100</button>
                 <button class="tier-btn" data-tier="medium">Medio · $250</button>
@@ -154,11 +177,14 @@ import {
 
         <div>
           <img
-            src="/assets/screenshots/hop_missions.png"
+            src="/assets/screenshots/hop_missions.webp"
             alt="Modo Campaña en la Playa"
-            style="border-radius:var(--r-l); border:1px solid var(--stroke-strong); cursor:zoom-in;"
+            width="960"
+            height="540"
+            style="border-radius:var(--r-l); border:1px solid var(--border-light); cursor:zoom-in;"
             data-lightbox="Camina por la arena hasta la torre del salvavidas y acepta misiones"
             loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -199,11 +225,14 @@ import {
 
         <div>
           <img
-            src="/assets/screenshots/start_modes.png"
+            src="/assets/screenshots/start_modes.webp"
             alt="Modo Free Surf"
-            style="border-radius:var(--r-l); border:1px solid var(--stroke-strong); cursor:zoom-in;"
+            width="960"
+            height="540"
+            style="border-radius:var(--r-l); border:1px solid var(--border-light); cursor:zoom-in;"
             data-lightbox="Elige cómo entrar al agua en Free Surf: Lineup, Paddle in o Drop in"
             loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -231,7 +260,7 @@ import {
         {BEACHES.map((b, i) => (
           <div class={`beach-tile ${i === 1 ? 'selected' : ''}`} data-beach={i}>
             <div class="beach-img">
-              <img src={b.photo} alt={b.name} loading="lazy" />
+              <img src={b.photo} alt={b.name} width="600" height="450" loading="lazy" decoding="async" />
               <div class="beach-scrim"></div>
               {b.iconic && <span class="iconic-pill">★ Icónica</span>}
             </div>
@@ -293,11 +322,14 @@ import {
 
           <img
             class="quiver-preview-img"
-            src="/assets/screenshots/board_picker.png"
+            src="/assets/screenshots/board_picker.webp"
             alt="Showroom de Tablas"
-            style="border-radius:var(--r-l); border:1px solid var(--stroke); cursor:zoom-in;"
+            width="960"
+            height="540"
+            style="border-radius:var(--r-l); border:1px solid var(--border-subtle); cursor:zoom-in;"
             data-lightbox="Showroom de las 7 tablas sobre el agua"
             loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -309,7 +341,7 @@ import {
               <span id="board-price-pill" class="badge badge-mint">GRATIS · INCLUIDA</span>
             </div>
             <h3 id="board-title" style="font-size:clamp(1.85rem, 4vw, 2.3rem); font-weight:800; line-height:1.08;">FUNBOARD</h3>
-            <p id="board-measures" style="color:var(--aqua); font-weight:700; font-size:0.9rem; margin:4px 0 10px 0;">7'10" · 45 Litros</p>
+            <p id="board-measures" style="color:var(--sea); font-weight:700; font-size:0.9rem; margin:4px 0 10px 0;">7'10" · 45 Litros</p>
             <p id="board-story" style="color:var(--text-secondary); font-size:0.94rem; margin-bottom:14px;"></p>
             <div id="board-badges" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;"></div>
 
@@ -324,7 +356,7 @@ import {
           </div>
 
           <div>
-            <div id="board-where" style="padding:11px 13px; border-radius:var(--r-m); background:rgba(255,255,255,0.05); font-size:0.82rem; color:var(--text-secondary); margin-bottom:12px;"></div>
+            <div id="board-where" style="padding:11px 13px; border-radius:var(--r-m); background:rgba(255,255,255,0.04); font-size:0.82rem; color:var(--text-secondary); margin-bottom:12px;"></div>
             <button id="board-buy-btn" class="btn-aqua" style="width:100%; padding:14px; font-size:0.96rem;">Surfear con esta tabla →</button>
           </div>
         </div>
@@ -333,84 +365,50 @@ import {
   </section>
 
   <!-- =====================================================================
-       SECCIÓN 5: PERSONALIZACIÓN Y TIENDAS DE PLAYA
+       SECCIÓN 5: EDITOR DE SURFISTA Y TIENDAS DE PLAYA
        ===================================================================== -->
   <section id="personalizacion" class="section">
     <div class="container">
       <div class="section-head">
         <div class="overline">TU ESTILO EN EL AGUA Y EN LA ARENA</div>
-        <h2 class="section-title">Personaliza tus tablas y a tu surfista</h2>
+        <h2 class="section-title">Personaliza a tu surfista y visita las tiendas</h2>
         <p class="section-desc">
-          Pinta cada parte de tu tabla con tus colores favoritos, crea a tu surfista ideal y colecciona los trajes y bañadores exclusivos de las tiendas de cada playa.
+          Crea a tu surfista ideal antes de entrar al mar y colecciona los trajes de neopreno, lycras y bañadores exclusivos de las tiendas oficiales de cada playa.
         </p>
       </div>
 
-      <div class="studio-grid">
-        <!-- Estudio de Pintura Interactivo -->
-        <div class="glass-sheet">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <div>
-              <span class="overline" style="margin-bottom:2px;">PRUÉBALO EN VIVO</span>
-              <h3 style="font-size:1.45rem; font-weight:800;">Pinta tu tabla a tu gusto</h3>
-            </div>
-            <button id="reset-paint" class="btn-glass" style="padding:6px 12px; font-size:0.78rem;">↺ Original</button>
-          </div>
-
-          <div class="svg-board-box">
-            <svg viewBox="0 0 360 150" width="100%" height="165" style="max-width:400px; filter: drop-shadow(0 16px 24px rgba(0,0,0,0.55));">
-              <g id="paint-fins" fill="#1FB5C1">
-                <path d="M68 42 L42 24 L52 50 Z"/>
-                <path d="M68 108 L42 126 L52 100 Z"/>
-                <path d="M48 75 L22 65 L28 85 Z"/>
-              </g>
-              <path id="paint-rail" fill="#5CE6E0" d="M28 75 C50 22, 165 16, 336 75 C165 134, 50 128, 28 75 Z"/>
-              <path id="paint-fill" fill="#FFF9D2" d="M38 75 C58 30, 164 25, 324 75 C164 125, 58 120, 38 75 Z"/>
-              <line x1="32" y1="75" x2="330" y2="75" stroke="rgba(7,19,29,0.32)" stroke-width="2"/>
-            </svg>
-          </div>
-
-          <div style="display:flex; justify-content:center;">
-            <div class="segmented paint-zone-segmented">
-              <button class="seg-item active" data-zone="fill">Cubierta (Fill)</button>
-              <button class="seg-item" data-zone="rail">Cantos (Rail)</button>
-              <button class="seg-item" data-zone="fins">Quillas (Fins)</button>
-            </div>
-          </div>
-
-          <div class="palette-grid" id="palette-grid"></div>
-          <p style="text-align:center; font-size:0.8rem; color:var(--text-tertiary);">
-            Elige una zona arriba y toca cualquier color para pintar la tabla al instante.
+      <!-- Editor de Surfista en diseño fluido 2 columnas -->
+      <div class="glass-sheet mode-split" style="margin-bottom:36px;">
+        <div>
+          <span class="overline" style="margin-bottom:4px;">EDITOR DE PERSONAJE 3D</span>
+          <h3 style="font-size:clamp(1.45rem, 3vw, 1.9rem); font-weight:800; margin-bottom:12px;">Crea a tu surfista ideal</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:18px;">
+            Configura cada detalle antes de entrar al agua: elige entre surfista masculino o femenino, tu postura sobre la tabla (<em>Regular</em> o <em>Goofy</em>), 8 tonos de piel, 7 peinados, barba y combina colores en trajes de neopreno, lycras y bañadores.
           </p>
+          <div class="surfer-specs-list">
+            <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Masculino y Femenino</div>
+            <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Postura Regular o Goofy</div>
+            <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>8 Tonos de Piel y 7 Peinados</div>
+            <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Neoprenos, Lycras y Bañadores</div>
+          </div>
         </div>
 
-        <!-- Editor de Surfista -->
-        <div class="glass-sheet" style="display:flex; flex-direction:column; justify-content:space-between;">
-          <div>
-            <span class="overline" style="margin-bottom:2px;">EDITOR DE PERSONAJE</span>
-            <h3 style="font-size:1.45rem; font-weight:800; margin-bottom:10px;">Crea a tu surfista ideal</h3>
-            <p style="color:var(--text-secondary); font-size:0.93rem; margin-bottom:14px;">
-              Configura cada detalle antes de entrar al agua: elige entre surfista masculino o femenino, tu postura sobre la tabla (<em>Regular</em> o <em>Goofy</em>), 8 tonos de piel, 7 peinados, barba y combina colores en trajes de neopreno, lycras y bañadores.
-            </p>
-            <div class="surfer-specs-list">
-              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Masculino y Femenino</div>
-              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Postura Regular o Goofy</div>
-              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>8 Tonos de Piel y 7 Peinados</div>
-              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Neoprenos, Lycras y Bañadores</div>
-            </div>
-          </div>
-
+        <div>
           <img
-            src="/assets/screenshots/character_editor.png"
+            src="/assets/screenshots/character_editor.webp"
             alt="Editor de Surfista"
-            style="border-radius:var(--r-l); border:1px solid var(--stroke-strong); cursor:zoom-in;"
+            width="960"
+            height="540"
+            style="border-radius:var(--r-l); border:1px solid var(--border-light); cursor:zoom-in;"
             data-lightbox="Personaliza el cuerpo, peinado, postura y traje de tu surfista"
             loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
 
       <!-- Las 4 Tiendas Locales -->
-      <div style="margin-top:16px;">
+      <div>
         <h3 style="font-size:clamp(1.4rem, 3vw, 1.75rem); font-weight:800; text-align:center; margin-bottom:6px;">Visita las 4 Tiendas Oficiales en la Playa</h3>
         <p style="text-align:center; color:var(--text-secondary); font-size:0.93rem; margin-bottom:22px;">
           Entra caminando a las chozas de surf de cada país para conocer a sus tenderos y comprar tablas o ropa exclusiva con el logo oficial de la playa:
@@ -419,7 +417,7 @@ import {
         <div class="shops-row">
           {SHOPS.map((shop) => (
             <div class="glass-card">
-              <div class="shop-logo"><img src={shop.logo} alt={shop.name} loading="lazy" /></div>
+              <div class="shop-logo"><img src={shop.logo} alt={shop.name} width="180" height="100" loading="lazy" decoding="async" /></div>
               <span class="badge badge-sun">{shop.badge}</span>
               <h4 style="font-size:1.06rem; font-weight:800; margin:8px 0 4px 0;">{shop.name}</h4>
               <p style="font-size:0.82rem; color:var(--text-secondary);">{shop.desc}</p>
@@ -444,7 +442,7 @@ import {
       <div class="shots-grid">
         {GALLERY_SHOTS.map((shot, idx) => (
           <div class="shot-item" data-lightbox={shot.caption} data-gallery-idx={idx}>
-            <img src={shot.src} alt={shot.label} loading="lazy" />
+            <img src={shot.src} alt={shot.label} width="640" height="360" loading="lazy" decoding="async" />
             <span>{shot.label}</span>
           </div>
         ))}
@@ -480,7 +478,7 @@ import {
     <div class="lightbox-card">
       <div class="lightbox-stage" id="lightbox-stage">
         <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Anterior">‹</button>
-        <img id="lightbox-img" src="" alt="SurfVR" />
+        <img id="lightbox-img" src="" alt="SurfVR" decoding="async" />
         <button class="lightbox-nav next" id="lightbox-next" aria-label="Siguiente">›</button>
       </div>
       <div class="lightbox-bar">
@@ -494,17 +492,17 @@ import {
   <div class="toast-wrap" id="toast-wrap"></div>
 
   <!-- Client-side Reactive Store & Mobile Gesture Engine -->
-  <script is:inline define:vars={{ BEACHES, BOARDS, PAINT_COLORS, GALLERY_SHOTS }}>
+  <script is:inline define:vars={{ BEACHES, BOARDS, GALLERY_SHOTS }}>
     window.SURFVR_DOWNLOADS = {
       windows: {
-        url: "/downloads/SurfVR-Windows-x64.exe",
-        filename: "SurfVR-Windows-x64.exe",
+        url: "https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=sharing",
+        external: true,
         platformName: "Windows (.EXE)"
       },
       macos: {
-        url: "https://apps.apple.com/app/surfvr-macos",
+        url: "https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing",
         external: true,
-        platformName: "Mac App Store"
+        platformName: "macOS (.DMG)"
       },
       iphone: {
         url: "https://apps.apple.com/app/surfvr-ios",
@@ -570,9 +568,7 @@ import {
           hard: [false, false, false],
           pro: [false, false, false]
         },
-        paid: { easy: false, medium: false, hard: false, pro: false },
-        paintZone: "fill",
-        paint: { fill: "#FFF9D2", rail: "#5CE6E0", fins: "#1FB5C1" }
+        paid: { easy: false, medium: false, hard: false, pro: false }
       }, {
         set(target, key, val) {
           target[key] = val;
@@ -608,7 +604,7 @@ import {
       function pipsHTML(n, color) {
         let s = "";
         for (let i = 0; i < 5; i++) {
-          s += `<span class="pip ${i < n ? "on" : ""}" style="--pip-c:${color || "var(--aqua)"}"></span>`;
+          s += `<span class="pip ${i < n ? "on" : ""}" style="--pip-c:${color || "var(--sea)"}"></span>`;
         }
         return s;
       }
@@ -721,26 +717,6 @@ import {
         });
       }
 
-      function renderPaint() {
-        document.getElementById("paint-fill")?.setAttribute("fill", state.paint.fill);
-        document.getElementById("paint-rail")?.setAttribute("fill", state.paint.rail);
-        document.getElementById("paint-fins")?.setAttribute("fill", state.paint.fins);
-
-        const grid = document.getElementById("palette-grid");
-        if (!grid) return;
-        const cur = state.paint[state.paintZone];
-        grid.innerHTML = PAINT_COLORS.map((c) => `
-          <button class="swatch-btn ${cur.toLowerCase() === c.toLowerCase() ? "active" : ""}"
-                  style="background:${c}" data-color="${c}" aria-label="Color ${c}"></button>
-        `).join("");
-
-        grid.querySelectorAll("[data-color]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            state.paint = { ...state.paint, [state.paintZone]: btn.getAttribute("data-color") };
-          });
-        });
-      }
-
       document.addEventListener("DOMContentLoaded", () => {
         // 1. Bind configurable download links + Smart Mobile OS Detection
         document.querySelectorAll("[data-download-platform]").forEach((a) => {
@@ -832,8 +808,8 @@ import {
             document.querySelectorAll("[data-shot]").forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             document.getElementById("hero-img").src = btn.getAttribute("data-shot");
-            document.getElementById("hero-pill-top").textContent = btn.getAttribute("data-top");
-            document.getElementById("hero-pill-bot").textContent = btn.getAttribute("data-bot");
+            document.getElementById("hero-hud-top").textContent = btn.getAttribute("data-top");
+            document.getElementById("hero-hud-bot").textContent = btn.getAttribute("data-bot");
           });
         });
 
@@ -942,21 +918,7 @@ import {
           renderBoards();
         });
 
-        // 12. Paint Zone
-        document.querySelectorAll("[data-zone]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            document.querySelectorAll("[data-zone]").forEach((b) => b.classList.remove("active"));
-            btn.classList.add("active");
-            state.paintZone = btn.getAttribute("data-zone");
-          });
-        });
-
-        document.getElementById("reset-paint")?.addEventListener("click", () => {
-          state.paint = { fill: "#FFF9D2", rail: "#5CE6E0", fins: "#1FB5C1" };
-          toast("Colores originales restaurados");
-        });
-
-        // 13. Touch Lightbox with Prev / Next & Swipe Gestures
+        // 12. Touch Lightbox with Prev / Next & Swipe Gestures
         const lb = document.getElementById("lightbox");
         const lbImg = document.getElementById("lightbox-img");
         const lbTxt = document.getElementById("lightbox-text");
@@ -1005,13 +967,11 @@ import {
         listeners.add(() => {
           updateBeachSelectionUI();
           renderBoards();
-          renderPaint();
         });
 
         updateBeachSelectionUI();
         renderBoards();
         renderMissions();
-        renderPaint();
       });
     })();
   </script>

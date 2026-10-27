@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = 'SurfVR — Siente el océano. Donde miras es hacia donde vas.',
-  description = 'Surfea olas con física realista en las 5 playas más famosas del mundo. Completa misiones en la playa, colecciona 7 tablas, personaliza tu estilo y juega en PC, Mac, iPhone y Android.'
+  description = 'Surfea olas con física realista en las 5 playas más famosas del mundo. Completa misiones en la playa, colecciona 7 tablas, personaliza a tu surfista y juega en PC, Mac, iPhone y Android.'
 } = Astro.props;
 ---
 
@@ -17,9 +17,32 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#07131D" />
+    <meta name="theme-color" content="#070D12" />
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    <!-- Flatten Network Dependency Tree & Accelerate LCP Discovery -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/screenshots/barrel_ride.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Manrope-ExtraBold.ttf"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/Manrope-Bold.ttf"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <slot />

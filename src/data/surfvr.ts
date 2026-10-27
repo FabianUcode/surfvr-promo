@@ -1,7 +1,6 @@
 /**
  * ============================================================================
  * CONFIGURACIÓN DE URLS DE DESCARGA Y DATOS DE SURFVR PROMO
- * Edita las URLs en `DOWNLOADS` para conectar tus tiendas o instaladores.
  * ============================================================================
  */
 
@@ -14,10 +13,27 @@ export interface DownloadPlatform {
   name: string;
   tag: string;
   theme: 'win' | 'apple' | 'apk';
-  mobilePriority?: boolean;
 }
 
 export const DOWNLOADS: Record<string, DownloadPlatform> = {
+  windows: {
+    key: 'windows',
+    url: 'https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=sharing',
+    external: true,
+    smallLabel: 'Descargar para PC',
+    name: 'Windows',
+    tag: 'Instalador .EXE',
+    theme: 'win'
+  },
+  macos: {
+    key: 'macos',
+    url: 'https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing',
+    external: true,
+    smallLabel: 'Descargar para Mac',
+    name: 'macOS',
+    tag: 'Instalador .DMG',
+    theme: 'apple'
+  },
   iphone: {
     key: 'iphone',
     url: 'https://apps.apple.com/app/surfvr-ios',
@@ -25,8 +41,7 @@ export const DOWNLOADS: Record<string, DownloadPlatform> = {
     smallLabel: 'Download on the',
     name: 'App Store',
     tag: 'iPhone & Visor VR',
-    theme: 'apple',
-    mobilePriority: true
+    theme: 'apple'
   },
   android: {
     key: 'android',
@@ -35,50 +50,31 @@ export const DOWNLOADS: Record<string, DownloadPlatform> = {
     smallLabel: 'Descarga Directa',
     name: 'Available on Android',
     tag: 'Instalador .APK',
-    theme: 'apk',
-    mobilePriority: true
-  },
-  windows: {
-    key: 'windows',
-    url: '/downloads/SurfVR-Windows-x64.exe',
-    filename: 'SurfVR-Windows-x64.exe',
-    smallLabel: 'Descargar para PC',
-    name: 'Windows',
-    tag: 'Instalador .EXE',
-    theme: 'win'
-  },
-  macos: {
-    key: 'macos',
-    url: 'https://apps.apple.com/app/surfvr-macos',
-    external: true,
-    smallLabel: 'Download on the',
-    name: 'Mac App Store',
-    tag: 'macOS Oficial',
-    theme: 'apple'
+    theme: 'apk'
   }
 };
 
 export const HERO_SHOTS = [
   {
-    src: '/assets/screenshots/barrel_ride.png',
+    src: '/assets/screenshots/barrel_ride.webp',
     label: 'Corriendo el Tubo',
     topHud: 'THIS WAVE · EXCELLENT 8.10',
     botHud: '∿ En el Tubo · 32 km/h'
   },
   {
-    src: '/assets/screenshots/hop_missions.png',
+    src: '/assets/screenshots/hop_missions.webp',
     label: 'Aventura en la Playa',
     topHud: 'MODO CAMPAÑA EN LA PLAYA',
     botHud: 'Misiones del Salvavidas · +$100'
   },
   {
-    src: '/assets/screenshots/beach_selector.png',
+    src: '/assets/screenshots/beach_selector.webp',
     label: '5 Playas Reales',
     topHud: '5 PLAYAS LEGENDARIAS',
     botHud: 'Pronóstico del Mar en Vivo'
   },
   {
-    src: '/assets/screenshots/tricks_score.png',
+    src: '/assets/screenshots/tricks_score.webp',
     label: 'Aéreos y Trucos',
     topHud: '360 AIR ^^^^',
     botHud: 'Calificación WSL · 8.10 pts'
@@ -87,7 +83,7 @@ export const HERO_SHOTS = [
 
 export const HIGHLIGHTS = [
   {
-    img: '/assets/screenshots/whitewater_tube.png',
+    img: '/assets/screenshots/whitewater_tube.webp',
     caption: 'Olas vivas con tubos profundos y espuma blanca',
     badge: 'HIDRODINÁMICA REAL',
     badgeClass: 'badge-aqua',
@@ -95,7 +91,7 @@ export const HIGHLIGHTS = [
     desc: 'Rema para atrapar la serie, sumérgete haciendo "el pato" (duck dive) por debajo de las olas que rompen frente a ti y deslízate dentro de tubos huecos mientras buscas la salida a toda velocidad.'
   },
   {
-    img: '/assets/screenshots/tricks_score.png',
+    img: '/assets/screenshots/tricks_score.webp',
     caption: 'Giros en el labio, tubos y aéreos 360 calificados del 0 al 10',
     badge: 'MANIOBRAS Y PUNTUACIÓN',
     badgeClass: 'badge-sun',
@@ -103,7 +99,7 @@ export const HIGHLIGHTS = [
     desc: 'Genera velocidad subiendo y bajando por la pared, marca cortes potentes en la cresta y despega por encima del labio. Cada ola recibe una puntuación de 0 a 10 puntos como en el tour mundial.'
   },
   {
-    img: '/assets/screenshots/main_menu.png',
+    img: '/assets/screenshots/main_menu.webp',
     caption: 'Juega en pantalla o con visor de Realidad Virtual',
     badge: 'PANTALLA O REALIDAD VIRTUAL',
     badgeClass: 'badge-mint',
@@ -116,7 +112,7 @@ export const BEACHES = [
   {
     name: "Teahupo'o",
     country: 'Tahití, Polinesia Francesa',
-    photo: '/assets/beaches/teahupoo.png',
+    photo: '/assets/beaches/teahupoo.webp',
     size: '3.5 – 13 pies',
     dir: '← Izquierda',
     iconic: true,
@@ -128,7 +124,7 @@ export const BEACHES = [
   {
     name: 'Pipeline',
     country: 'Oahu, Hawaii',
-    photo: '/assets/beaches/pipeline.png',
+    photo: '/assets/beaches/pipeline.webp',
     size: '3 – 12 pies',
     dir: '← Izquierda',
     iconic: true,
@@ -140,7 +136,7 @@ export const BEACHES = [
   {
     name: 'Nazaré',
     country: 'Praia do Norte, Portugal',
-    photo: '/assets/beaches/nazare.png',
+    photo: '/assets/beaches/nazare.webp',
     size: 'Hasta 40 pies (12 m)',
     dir: '↔ Ambos lados',
     iconic: true,
@@ -152,7 +148,7 @@ export const BEACHES = [
   {
     name: 'Chicama',
     country: 'Puerto Malabrigo, Perú',
-    photo: '/assets/beaches/chicama.png',
+    photo: '/assets/beaches/chicama.webp',
     size: '2.5 – 7 pies',
     dir: '← Izquierda',
     iconic: false,
@@ -164,7 +160,7 @@ export const BEACHES = [
   {
     name: 'Jeffreys Bay',
     country: 'Supertubes, Sudáfrica',
-    photo: '/assets/beaches/jbay.png',
+    photo: '/assets/beaches/jbay.webp',
     size: '3 – 9 pies',
     dir: '→ Derecha',
     iconic: false,
@@ -257,25 +253,25 @@ export const BOARDS = [
 
 export const SHOPS = [
   {
-    logo: '/assets/logos/logo_pipeline.png',
+    logo: '/assets/logos/logo_pipeline.webp',
     badge: 'Hawaii · Tendero: Kai',
     name: 'North Shore Surf Shack',
     desc: 'Hogar de la Shortboard, la Twin y las prendas exclusivas de Pipeline.'
   },
   {
-    logo: '/assets/logos/logo_nazare.png',
+    logo: '/assets/logos/logo_nazare.webp',
     badge: 'Portugal · Tendero: Tiago',
     name: 'Praia do Norte Big Wave',
     desc: 'Consigue aquí la legendaria tabla Gun para olas gigantes y el neopreno de tormenta.'
   },
   {
-    logo: '/assets/logos/logo_chicama.png',
+    logo: '/assets/logos/logo_chicama.webp',
     badge: 'Perú · Tendero: Lucho',
     name: 'Malabrigo Surf Club',
     desc: 'El club de la izquierda más larga del mundo, con el Longboard clásico y la rápida Fish.'
   },
   {
-    logo: '/assets/logos/logo_jbay.png',
+    logo: '/assets/logos/logo_jbay.webp',
     badge: 'Sudáfrica · Tendero: Sipho',
     name: 'Supertubes Board Room',
     desc: 'Tablas veloces para derechas perfectas y trajes con el emblema oficial de Jeffreys Bay.'
@@ -283,17 +279,12 @@ export const SHOPS = [
 ];
 
 export const GALLERY_SHOTS = [
-  { src: '/assets/screenshots/barrel_ride.png', label: 'Corriendo el Tubo', caption: 'Dentro del tubo a 32 km/h' },
-  { src: '/assets/screenshots/beach_selector.png', label: 'Las 5 Playas Reales', caption: 'Selecciona entre las 5 playas reales del mundo' },
-  { src: '/assets/screenshots/hop_missions.png', label: 'Modo Campaña en la Playa', caption: 'Modo Campaña: camina hacia la torre del salvavidas' },
-  { src: '/assets/screenshots/board_picker.png', label: 'Las 7 Tablas', caption: 'Showroom con las 7 tablas del juego' },
-  { src: '/assets/screenshots/board_showroom.png', label: 'Personalización de Tablas', caption: 'Taller de pintura para personalizar tus tablas' },
-  { src: '/assets/screenshots/character_editor.png', label: 'Editor de Surfista', caption: 'Editor completo de surfista y trajes' },
-  { src: '/assets/screenshots/surf_shop.png', label: 'Tiendas en la Playa', caption: 'Interior de la tienda North Shore Surf Shack' },
-  { src: '/assets/screenshots/tricks_score.png', label: 'Aéreos y Puntuación', caption: 'Aéreos 360 y calificación de olas' }
-];
-
-export const PAINT_COLORS = [
-  '#FFFFFF', '#F5E9D3', '#FFE07D', '#FFAA4C', '#FF6B5B', '#FF9CEE', '#C59BFF',
-  '#6478C8', '#6CB4FF', '#BCE6FF', '#5CE6E0', '#7CE8A2', '#A8B2BD', '#26303D'
+  { src: '/assets/screenshots/barrel_ride.webp', label: 'Corriendo el Tubo', caption: 'Dentro del tubo a 32 km/h' },
+  { src: '/assets/screenshots/beach_selector.webp', label: 'Las 5 Playas Reales', caption: 'Selecciona entre las 5 playas reales del mundo' },
+  { src: '/assets/screenshots/hop_missions.webp', label: 'Modo Campaña en la Playa', caption: 'Modo Campaña: camina hacia la torre del salvavidas' },
+  { src: '/assets/screenshots/board_picker.webp', label: 'Las 7 Tablas', caption: 'Showroom con las 7 tablas del juego' },
+  { src: '/assets/screenshots/character_editor.webp', label: 'Editor de Surfista', caption: 'Editor completo de surfista y trajes' },
+  { src: '/assets/screenshots/surf_shop.webp', label: 'Tiendas en la Playa', caption: 'Interior de la tienda North Shore Surf Shack' },
+  { src: '/assets/screenshots/tricks_score.webp', label: 'Aéreos y Puntuación', caption: 'Aéreos 360 y calificación de olas' },
+  { src: '/assets/screenshots/whitewater_tube.webp', label: 'Interior del Tubo', caption: 'Olas huecas con espuma realista' }
 ];
