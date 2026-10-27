@@ -391,11 +391,11 @@ import {
             <p style="color:var(--text-secondary); font-size:0.93rem; margin-bottom:14px;">
               Configura cada detalle antes de entrar al agua: elige entre surfista masculino o femenino, tu postura sobre la tabla (<em>Regular</em> o <em>Goofy</em>), 8 tonos de piel, 7 peinados, barba y combina colores en trajes de neopreno, lycras y bañadores.
             </p>
-            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
-              <span class="badge badge-aqua">Masculino y Femenino</span>
-              <span class="badge">Postura Regular o Goofy</span>
-              <span class="badge badge-sun">8 Tonos de Piel y 7 Peinados</span>
-              <span class="badge badge-mint">Neoprenos, Lycras y Bañadores</span>
+            <div class="surfer-specs-list">
+              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Masculino y Femenino</div>
+              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Postura Regular o Goofy</div>
+              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>8 Tonos de Piel y 7 Peinados</div>
+              <div class="surfer-spec-item"><span class="surfer-spec-dot"></span>Neoprenos, Lycras y Bañadores</div>
             </div>
           </div>
 
@@ -654,7 +654,10 @@ import {
 
         if (scrollIntoViewOnMobile) {
           const activeCard = row.querySelector(`[data-board="${state.selectedBoard}"]`);
-          activeCard?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          if (activeCard) {
+            const left = activeCard.offsetLeft - (row.clientWidth - activeCard.clientWidth) / 2;
+            row.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+          }
         }
 
         const b = BOARDS[state.selectedBoard];
@@ -846,7 +849,11 @@ import {
             dot.addEventListener("click", () => {
               const i = parseInt(dot.getAttribute("data-carousel-dot"), 10);
               const cards = hlCarousel.querySelectorAll(".highlight-card");
-              cards[i]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+              const card = cards[i];
+              if (card) {
+                const left = card.offsetLeft - (hlCarousel.clientWidth - card.clientWidth) / 2;
+                hlCarousel.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+              }
             });
           });
         }
@@ -883,11 +890,16 @@ import {
 
         // 10. Beaches Selection & Mobile Snap Carousel Sync
         const beachesBox = document.getElementById("beaches-container");
+        function scrollContainerToCard(container, card) {
+          if (!container || !card) return;
+          const left = card.offsetLeft - (container.clientWidth - card.clientWidth) / 2;
+          container.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+        }
         beachesBox?.querySelectorAll("[data-beach]").forEach((card) => {
           card.addEventListener("click", () => {
             state.selectedBeach = parseInt(card.getAttribute("data-beach"), 10);
             toast("Destino elegido: " + BEACHES[state.selectedBeach].name);
-            card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+            scrollContainerToCard(beachesBox, card);
           });
         });
         document.querySelectorAll("[data-beach-dot]").forEach((dot) => {
@@ -895,7 +907,7 @@ import {
             const i = parseInt(dot.getAttribute("data-beach-dot"), 10);
             state.selectedBeach = i;
             const target = beachesBox?.querySelector(`[data-beach="${i}"]`);
-            target?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+            scrollContainerToCard(beachesBox, target);
           });
         });
 

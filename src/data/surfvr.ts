@@ -122,7 +122,7 @@ export const BEACHES = [
     iconic: true,
     cond: 'VERY GOOD',
     pips: 4,
-    color: 'var(--aqua)',
+    color: '#38BDF8',
     desc: 'Una ola poderosa y hueca sobre arrecife de coral cristalino, famosa por sus tubos intensos.'
   },
   {
@@ -134,7 +134,7 @@ export const BEACHES = [
     iconic: true,
     cond: 'EPIC',
     pips: 5,
-    color: 'var(--violet)',
+    color: '#2DD4BF',
     desc: 'El templo mundial del tubo. Olas cilíndricas perfectas que rompen cerca de la arena dorada.'
   },
   {
@@ -146,7 +146,7 @@ export const BEACHES = [
     iconic: true,
     cond: 'GOOD',
     pips: 4,
-    color: 'var(--mint)',
+    color: '#34D399',
     desc: 'El cañón submarino de las olas gigantes. Paredes descomunales para poner a prueba tu valor.'
   },
   {
@@ -158,7 +158,7 @@ export const BEACHES = [
     iconic: false,
     cond: 'VERY GOOD',
     pips: 4,
-    color: 'var(--aqua)',
+    color: '#38BDF8',
     desc: 'La izquierda más larga del mundo: paredes nobles e interminables para encadenar decenas de giros.'
   },
   {
@@ -170,7 +170,7 @@ export const BEACHES = [
     iconic: false,
     cond: 'GOOD',
     pips: 4,
-    color: 'var(--mint)',
+    color: '#34D399',
     desc: 'Una derecha larga, rápida y perfecta que te permite volar por la línea y buscar tubos largos.'
   }
 ];
