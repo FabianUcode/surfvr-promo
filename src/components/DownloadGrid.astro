@@ -1,0 +1,64 @@
+---
+interface Props {
+  centered?: boolean;
+}
+const { centered = false } = Astro.props;
+---
+
+<div class="dl-grid" style={centered ? 'max-width:860px; margin:0 auto;' : ''}>
+  <!-- 1. PC / WINDOWS (.EXE) -->
+  <a href="/downloads/SurfVR-Windows-x64.exe" class="dl-card dl-win" data-download-platform="windows">
+    <div class="dl-logo">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/>
+      </svg>
+    </div>
+    <div class="dl-info">
+      <span class="dl-small">Descargar para PC</span>
+      <span class="dl-name">Windows</span>
+      <span class="dl-tag">Instalador .EXE</span>
+    </div>
+  </a>
+
+  <!-- 2. macOS (App Store Logo) -->
+  <a href="https://apps.apple.com/app/surfvr-macos" class="dl-card dl-apple" data-download-platform="macos">
+    <div class="dl-logo">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
+      </svg>
+    </div>
+    <div class="dl-info">
+      <span class="dl-small">Download on the</span>
+      <span class="dl-name">Mac App Store</span>
+      <span class="dl-tag">macOS Oficial</span>
+    </div>
+  </a>
+
+  <!-- 3. iPhone (App Store Logo) -->
+  <a href="https://apps.apple.com/app/surfvr-ios" class="dl-card dl-apple" data-download-platform="iphone">
+    <div class="dl-logo">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.41 14.59a.996.996 0 01-1.37-.36l-.77-1.33H8.73l-.77 1.33a1 1 0 01-1.73-1l2.86-4.95-1.03-1.78a1 1 0 111.73-1l.58 1 .58-1a1 1 0 111.73 1l-3.27 5.66h3.54l-.95-1.65a1 1 0 011.73-1l1.94 3.36c.28.48.11 1.09-.36 1.37zm1.59-3.69h-2.12a1 1 0 110-2H17a1 1 0 110 2z"/>
+      </svg>
+    </div>
+    <div class="dl-info">
+      <span class="dl-small">Download on the</span>
+      <span class="dl-name">App Store</span>
+      <span class="dl-tag">iPhone & Visor VR</span>
+    </div>
+  </a>
+
+  <!-- 4. Android (Robot "Androidsito" + Available on Android + .APK) -->
+  <a href="/downloads/SurfVR-Android.apk" class="dl-card dl-apk" data-download-platform="android">
+    <div class="dl-logo">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.43 11.43 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.81 10.81 0 001 18h22a10.81 10.81 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/>
+      </svg>
+    </div>
+    <div class="dl-info">
+      <span class="dl-small">Descarga Directa</span>
+      <span class="dl-name">Available on Android</span>
+      <span class="dl-tag">Instalador .APK</span>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,84 @@
+---
+---
+
+<!-- =====================================================================
+     NAVBAR SEA GLASS + MOBILE DRAWER
+     ===================================================================== -->
+<div class="nav-wrap">
+  <nav class="navbar">
+    <a href="#inicio" class="brand">
+      <span class="brand-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M2 13c2.5-3 5-3 7.5 0s5 3 7.5 0 4.5-3 5 0"/>
+          <path d="M2 18c2.5-3 5-3 7.5 0s5 3 7.5 0 4.5-3 5 0"/>
+        </svg>
+      </span>
+      <span>SurfVR</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#olas" data-nav-link>Olas Realistas</a></li>
+      <li><a href="#modos" data-nav-link>Campaña y Modos</a></li>
+      <li><a href="#playas" data-nav-link>Las 5 Playas</a></li>
+      <li><a href="#tablas" data-nav-link>7 Tablas</a></li>
+      <li><a href="#personalizacion" data-nav-link>Personalización</a></li>
+      <li><a href="#galeria" data-nav-link>Galería</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button id="wallet-btn" class="coin-pill" title="Tu dinero de playa: cumple misiones abajo o toca para +$250">
+        <span class="coin-circle"></span>
+        <span id="wallet-val">$500</span>
+        <span id="wallet-pop" class="coin-delta"></span>
+      </button>
+      <a href="#descargar" class="btn-aqua nav-cta-desktop" style="padding: 9px 18px; font-size: 0.86rem;">Jugar Ahora</a>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Menú">
+        <svg id="menu-icon-bars" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+        <svg id="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.2" fill="none" style="display:none;">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- =====================================================================
+     NATIVE-STYLE MOBILE BOTTOM APP DOCK (VISIBLE ON MOBILE/TABLET)
+     ===================================================================== -->
+<nav class="mobile-bottom-dock" aria-label="Navegación móvil rápida">
+  <a href="#inicio" class="dock-item active" data-dock-target="inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <path d="M2 13c2.5-3 5-3 7.5 0s5 3 7.5 0 4.5-3 5 0"/>
+      <path d="M2 18c2.5-3 5-3 7.5 0s5 3 7.5 0 4.5-3 5 0"/>
+    </svg>
+    <span>Inicio</span>
+  </a>
+  <a href="#modos" class="dock-item" data-dock-target="modos">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+    </svg>
+    <span>Campaña</span>
+  </a>
+  <a href="#playas" class="dock-item" data-dock-target="playas">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="10" r="3"/>
+      <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z"/>
+    </svg>
+    <span>Playas</span>
+  </a>
+  <a href="#tablas" class="dock-item" data-dock-target="tablas">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2C16.5 6.5 17.5 16 12 22C6.5 16 7.5 6.5 12 2Z"/>
+      <line x1="12" y1="3" x2="12" y2="21"/>
+    </svg>
+    <span>Tablas</span>
+  </a>
+  <a href="#descargar" class="dock-item dock-cta" data-dock-target="descargar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/>
+    </svg>
+    <span>Descargar</span>
+  </a>
+</nav>

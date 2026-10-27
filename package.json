@@ -1,0 +1,16 @@
+{
+  "name": "surfvr-promo",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "SurfVR — Landing Page Promocional Oficial (Sea Glass Mobile-First Edition con Astro)",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

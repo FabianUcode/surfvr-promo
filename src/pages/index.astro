@@ -1,0 +1,1006 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import DownloadGrid from '../components/DownloadGrid.astro';
+import {
+  HERO_SHOTS,
+  HIGHLIGHTS,
+  BEACHES,
+  BOARDS,
+  SHOPS,
+  GALLERY_SHOTS,
+  PAINT_COLORS
+} from '../data/surfvr';
+---
+
+<Layout>
+  <Navbar />
+
+  <!-- =====================================================================
+       HERO + ZONA DE DESCARGAS OFICIAL (MOBILE-FIRST)
+       ===================================================================== -->
+  <header id="inicio" class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div>
+          <span class="badge badge-aqua">DISPONIBLE EN PC · MAC · IPHONE · ANDROID</span>
+          <h1 class="hero-title">SurfVR</h1>
+          <p class="hero-quote">“Where you look is where you go.”</p>
+          <p class="hero-lead">
+            Vive la emoción de deslizarte dentro de tubos cristalinos con <strong>física de olas realista</strong>. Recorre la playa a pie, supera los desafíos de los salvavidas, desbloquea nuevas tablas en las tiendas locales y surfea las 5 playas más icónicas del planeta.
+          </p>
+
+          <!-- Smart Mobile Device Recommendation Banner (auto-detected on iOS/Android) -->
+          <div class="smart-device-cta" id="smart-device-cta">
+            <a href="#descargar" class="smart-cta-btn" id="smart-device-link">
+              <div>
+                <div style="font-size:0.68rem; font-weight:800; color:var(--aqua); text-transform:uppercase; letter-spacing:0.08em;">RECOMENDADO PARA TU DISPOSITIVO</div>
+                <div id="smart-device-title" style="font-size:1.05rem; font-weight:800; color:#fff;">Descargar SurfVR</div>
+              </div>
+              <span class="badge badge-aqua" id="smart-device-badge">Instalar →</span>
+            </a>
+          </div>
+
+          <!-- ZONA DE DESCARGAS -->
+          <div class="dl-label">Descarga el juego en tu plataforma favorita</div>
+          <DownloadGrid />
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-showcase">
+          <div class="hero-frame" id="hero-open-lightbox">
+            <img id="hero-img" src={HERO_SHOTS[0].src} alt="SurfVR en el tubo" />
+            <div class="hud-pill top" id="hero-pill-top">{HERO_SHOTS[0].topHud}</div>
+            <div class="hud-pill bottom" id="hero-pill-bot">{HERO_SHOTS[0].botHud}</div>
+          </div>
+
+          <div class="hero-strip">
+            {HERO_SHOTS.map((shot, idx) => (
+              <button
+                class={`strip-thumb ${idx === 0 ? 'active' : ''}`}
+                data-shot={shot.src}
+                data-top={shot.topHud}
+                data-bot={shot.botHud}
+              >
+                <img src={shot.src} alt={shot.label} loading="lazy" />
+                <span>{shot.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       SECCIÓN 1: OLAS VIVAS Y FÍSICA REALISTA (SNAP CAROUSEL EN MOBILE)
+       ===================================================================== -->
+  <section id="olas" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">UN OCÉANO QUE SE SIENTE VIVO</div>
+        <h2 class="section-title">Física de olas realista en cada sesión</h2>
+        <p class="section-desc">
+          Ninguna ola es una animación repetida: el mar responde al fondo de cada playa formando paredes, tubos cristalinos y espuma blanca donde cada giro depende de tu velocidad y equilibrio.
+        </p>
+      </div>
+
+      <div class="mobile-swipe-hint">
+        <span>← Desliza para explorar →</span>
+      </div>
+
+      <div class="highlights-grid" id="highlights-carousel">
+        {HIGHLIGHTS.map((item) => (
+          <div class="glass-card highlight-card">
+            <img src={item.img} alt={item.title} data-lightbox={item.caption} loading="lazy" />
+            <span class={`badge ${item.badgeClass}`} style="align-self:flex-start;">{item.badge}</span>
+            <h3>{item.title}</h3>
+            <p style="color:var(--text-secondary); font-size:0.93rem;">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="carousel-dots" id="highlights-dots">
+        {HIGHLIGHTS.map((_, i) => (
+          <button class={`carousel-dot ${i === 0 ? 'active' : ''}`} data-carousel-dot={i} aria-label={`Slide ${i + 1}`}></button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN 2: MODO CAMPAÑA (AVENTURA EN LA PLAYA) Y MODO FREE SURF
+       ===================================================================== -->
+  <section id="modos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">DOS GRANDES FORMAS DE JUGAR</div>
+        <h2 class="section-title">Modo Campaña en la Playa y Modo Free Surf</h2>
+        <p class="section-desc">
+          Vive la progresión completa caminando por la arena, cumpliendo misiones del salvavidas y comprando nuevas tablas, o entra directo al mar en sesión libre.
+        </p>
+
+        <div class="mode-switcher-wrap" style="margin-top:22px;">
+          <div class="segmented">
+            <button class="seg-item active" data-mode-btn="campana">🏖️ Modo Campaña</button>
+            <button class="seg-item" data-mode-btn="freesurf">🌊 Modo Free Surf</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODO 1: CAMPAÑA / HOP INTO THE BEACH -->
+      <div id="panel-campana" class="glass-sheet mode-split">
+        <div>
+          <span class="badge badge-sun">PROGRESIÓN · MISIONES · TIENDAS EN LA ARENA</span>
+          <h3 style="font-size:clamp(1.45rem, 3vw, 1.95rem); font-weight:800; margin:12px 0;">Explora la playa a pie, supera misiones y gana dinero</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">
+            En <strong>Hop Into The Beach</strong> comienzas caminando por la arena con tu tabla bajo el brazo. Acércate a la torre del salvavidas para recibir desafíos de distintos niveles (<em>Fácil, Medio, Difícil y Pro</em>). Al completarlos en el agua, regresa a la torre para cobrar tus recompensas de <strong>$100 a $1,000</strong> y visita la tienda de surf de la playa.
+          </p>
+
+          <!-- Simulador Interactivo de Misiones -->
+          <div class="mission-box">
+            <div class="mission-header">
+              <span style="font-size:0.75rem; font-weight:800; color:var(--aqua);">DESAFÍOS DEL SALVAVIDAS (¡TOCA PARA COMPLETAR!)</span>
+              <div class="tier-pills">
+                <button class="tier-btn active" data-tier="easy">Fácil · $100</button>
+                <button class="tier-btn" data-tier="medium">Medio · $250</button>
+                <button class="tier-btn" data-tier="hard">Difícil · $500</button>
+                <button class="tier-btn" data-tier="pro">Pro · $1,000</button>
+              </div>
+            </div>
+            <div id="missions-container"></div>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="/assets/screenshots/hop_missions.png"
+            alt="Modo Campaña en la Playa"
+            style="border-radius:var(--r-l); border:1px solid var(--stroke-strong); cursor:zoom-in;"
+            data-lightbox="Camina por la arena hasta la torre del salvavidas y acepta misiones"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- MODO 2: FREE SURF -->
+      <div id="panel-freesurf" class="glass-sheet mode-split" style="display:none;">
+        <div>
+          <span class="badge badge-aqua">ACCIÓN INMEDIATA · TÚ DECIDES CÓMO ENTRAR</span>
+          <h3 style="font-size:clamp(1.45rem, 3vw, 1.95rem); font-weight:800; margin:12px 0;">Free Surf: Elige tu playa, tu tabla y al agua</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">
+            ¿Quieres ir directo a surfear sin distracciones? En <strong>Free Surf</strong> revisas el estado del mar en las 5 playas del mundo, eliges cualquiera de tus tablas desbloqueadas y seleccionas cómo quieres iniciar cada ola:
+          </p>
+
+          <div class="start-cards">
+            <button class="start-card active" data-start-pick="Lineup">
+              <div>
+                <span class="badge badge-aqua" style="margin-bottom:6px;">Inmersión Total</span>
+                <h4>En el Lineup</h4>
+                <p>Espera sentado en el agua junto a otros surfistas, mira venir la serie y rema tu ola favorita.</p>
+              </div>
+            </button>
+            <button class="start-card" data-start-pick="Paddle in">
+              <div>
+                <span class="badge" style="margin-bottom:6px;">Al Momento</span>
+                <h4>Remando la Ola</h4>
+                <p>Comienza remando justo en el segundo en que la ola se levanta detrás de ti.</p>
+              </div>
+            </button>
+            <button class="start-card" data-start-pick="Drop in">
+              <div>
+                <span class="badge badge-sun" style="margin-bottom:6px;">Adrenalina Pura</span>
+                <h4>Drop In Directo</h4>
+                <p>Empieza ya de pie bajando a toda velocidad por la pared de la ola.</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="/assets/screenshots/start_modes.png"
+            alt="Modo Free Surf"
+            style="border-radius:var(--r-l); border:1px solid var(--stroke-strong); cursor:zoom-in;"
+            data-lightbox="Elige cómo entrar al agua en Free Surf: Lineup, Paddle in o Drop in"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN 3: LAS 5 PLAYAS REALES DEL MUNDO (SNAP CAROUSEL EN MOBILE)
+       ===================================================================== -->
+  <section id="playas" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">DESTINOS DE CLASE MUNDIAL</div>
+        <h2 class="section-title">Surfea en 5 playas reales legendarias</h2>
+        <p class="section-desc">
+          Cada destino recrea el tamaño, la dirección de rompiente y la personalidad única de los spots más famosos del planeta, con reportes de condiciones dinámicos desde días tranquilos hasta oleajes épicos.
+        </p>
+      </div>
+
+      <div class="mobile-swipe-hint">
+        <span>← Desliza las 5 playas y toca tu favorita →</span>
+      </div>
+
+      <div class="beaches-grid" id="beaches-container">
+        {BEACHES.map((b, i) => (
+          <div class={`beach-tile ${i === 1 ? 'selected' : ''}`} data-beach={i}>
+            <div class="beach-img">
+              <img src={b.photo} alt={b.name} loading="lazy" />
+              <div class="beach-scrim"></div>
+              {b.iconic && <span class="iconic-pill">★ Icónica</span>}
+            </div>
+            <div class="beach-content">
+              <div>
+                <h3 style="font-size:1.22rem; font-weight:800;">{b.name}</h3>
+                <p style="font-size:0.74rem; font-weight:700; color:var(--text-tertiary); text-transform:uppercase;">{b.country}</p>
+              </div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                <span class="badge">{b.size}</span>
+                <span class="badge">{b.dir}</span>
+              </div>
+              <p style="font-size:0.84rem; color:var(--text-secondary); flex:1;">{b.desc}</p>
+              <div>
+                <div style={`font-size:0.72rem; font-weight:800; color:${b.color}; margin-bottom:4px;`}>CONDICIÓN: {b.cond}</div>
+                <div class="pips-bar">
+                  {[0, 1, 2, 3, 4].map((p) => (
+                    <span class={`pip ${p < b.pips ? 'on' : ''}`} style={`--pip-c:${b.color}`}></span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="carousel-dots" id="beaches-dots">
+        {BEACHES.map((_, i) => (
+          <button class={`carousel-dot ${i === 1 ? 'active' : ''}`} data-beach-dot={i} aria-label={`Playa ${i + 1}`}></button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN 4: LAS 7 TABLAS COLECCIONABLES (DOCK COMPACTO EN MOBILE)
+       ===================================================================== -->
+  <section id="tablas" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">TU QUIVER DE 7 TABLAS</div>
+        <h2 class="section-title">Una tabla para cada tipo de ola</h2>
+        <p class="section-desc">
+          Comienza con tu <strong>Funboard</strong> gratuita y usa el dinero ganado en las misiones del salvavidas para coleccionar las 7 tablas en las tiendas de cada playa. Toca cada tabla para comparar su sensación en el agua:
+        </p>
+      </div>
+
+      <div class="quiver-grid">
+        <div class="glass-sheet" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+            <span class="badge badge-aqua">COLECCIÓN DE 7 MODELOS</span>
+            <div class="board-nav-arrows">
+              <button class="board-arrow-btn" id="board-prev-btn" aria-label="Tabla anterior">‹</button>
+              <button class="board-arrow-btn" id="board-next-btn" aria-label="Siguiente tabla">›</button>
+            </div>
+          </div>
+
+          <div class="pedestals-row" id="pedestals-row"></div>
+
+          <img
+            class="quiver-preview-img"
+            src="/assets/screenshots/board_picker.png"
+            alt="Showroom de Tablas"
+            style="border-radius:var(--r-l); border:1px solid var(--stroke); cursor:zoom-in;"
+            data-lightbox="Showroom de las 7 tablas sobre el agua"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Ficha Amigable de la Tabla Seleccionada -->
+        <div class="glass-sheet" style="display:flex; flex-direction:column; justify-content:space-between; gap:18px;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span id="board-step" style="font-size:0.75rem; font-weight:800; color:var(--text-tertiary);">TABLA 1 DE 7</span>
+              <span id="board-price-pill" class="badge badge-mint">GRATIS · INCLUIDA</span>
+            </div>
+            <h3 id="board-title" style="font-size:clamp(1.85rem, 4vw, 2.3rem); font-weight:800; line-height:1.08;">FUNBOARD</h3>
+            <p id="board-measures" style="color:var(--aqua); font-weight:700; font-size:0.9rem; margin:4px 0 10px 0;">7'10" · 45 Litros</p>
+            <p id="board-story" style="color:var(--text-secondary); font-size:0.94rem; margin-bottom:14px;"></p>
+            <div id="board-badges" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;"></div>
+
+            <div style="font-size:0.74rem; font-weight:800; color:var(--text-tertiary); letter-spacing:0.08em; margin-bottom:10px;">SENSACIÓN EN EL AGUA</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div class="feel-row"><span>Giros</span><div class="pips-bar" id="feel-turn"></div></div>
+              <div class="feel-row"><span>Estabilidad</span><div class="pips-bar" id="feel-stab"></div></div>
+              <div class="feel-row"><span>Remada</span><div class="pips-bar" id="feel-pad"></div></div>
+              <div class="feel-row"><span>Olas Grandes</span><div class="pips-bar" id="feel-big"></div></div>
+              <div class="feel-row"><span>Olas Pequeñas</span><div class="pips-bar" id="feel-small"></div></div>
+            </div>
+          </div>
+
+          <div>
+            <div id="board-where" style="padding:11px 13px; border-radius:var(--r-m); background:rgba(255,255,255,0.05); font-size:0.82rem; color:var(--text-secondary); margin-bottom:12px;"></div>
+            <button id="board-buy-btn" class="btn-aqua" style="width:100%; padding:14px; font-size:0.96rem;">Surfear con esta tabla →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN 5: PERSONALIZACIÓN Y TIENDAS DE PLAYA
+       ===================================================================== -->
+  <section id="personalizacion" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">TU ESTILO EN EL AGUA Y EN LA ARENA</div>
+        <h2 class="section-title">Personaliza tus tablas y a tu surfista</h2>
+        <p class="section-desc">
+          Pinta cada parte de tu tabla con tus colores favoritos, crea a tu surfista ideal y colecciona los trajes y bañadores exclusivos de las tiendas de cada playa.
+        </p>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Estudio de Pintura Interactivo -->
+        <div class="glass-sheet">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div>
+              <span class="overline" style="margin-bottom:2px;">PRUÉBALO EN VIVO</span>
+              <h3 style="font-size:1.45rem; font-weight:800;">Pinta tu tabla a tu gusto</h3>
+            </div>
+            <button id="reset-paint" class="btn-glass" style="padding:6px 12px; font-size:0.78rem;">↺ Original</button>
+          </div>
+
+          <div class="svg-board-box">
+            <svg viewBox="0 0 360 150" width="100%" height="165" style="max-width:400px; filter: drop-shadow(0 16px 24px rgba(0,0,0,0.55));">
+              <g id="paint-fins" fill="#1FB5C1">
+                <path d="M68 42 L42 24 L52 50 Z"/>
+                <path d="M68 108 L42 126 L52 100 Z"/>
+                <path d="M48 75 L22 65 L28 85 Z"/>
+              </g>
+              <path id="paint-rail" fill="#5CE6E0" d="M28 75 C50 22, 165 16, 336 75 C165 134, 50 128, 28 75 Z"/>
+              <path id="paint-fill" fill="#FFF9D2" d="M38 75 C58 30, 164 25, 324 75 C164 125, 58 120, 38 75 Z"/>
+              <line x1="32" y1="75" x2="330" y2="75" stroke="rgba(7,19,29,0.32)" stroke-width="2"/>
+            </svg>
+          </div>
+
+          <div style="display:flex; justify-content:center;">
+            <div class="segmented paint-zone-segmented">
+              <button class="seg-item active" data-zone="fill">Cubierta (Fill)</button>
+              <button class="seg-item" data-zone="rail">Cantos (Rail)</button>
+              <button class="seg-item" data-zone="fins">Quillas (Fins)</button>
+            </div>
+          </div>
+
+          <div class="palette-grid" id="palette-grid"></div>
+          <p style="text-align:center; font-size:0.8rem; color:var(--text-tertiary);">
+            Elige una zona arriba y toca cualquier color para pintar la tabla al instante.
+          </p>
+        </div>
+
+        <!-- Editor de Surfista -->
+        <div class="glass-sheet" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <span class="overline" style="margin-bottom:2px;">EDITOR DE PERSONAJE</span>
+            <h3 style="font-size:1.45rem; font-weight:800; margin-bottom:10px;">Crea a tu surfista ideal</h3>
+            <p style="color:var(--text-secondary); font-size:0.93rem; margin-bottom:14px;">
+              Configura cada detalle antes de entrar al agua: elige entre surfista masculino o femenino, tu postura sobre la tabla (<em>Regular</em> o <em>Goofy</em>), 8 tonos de piel, 7 peinados, barba y combina colores en trajes de neopreno, lycras y bañadores.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;">
+              <span class="badge badge-aqua">Masculino y Femenino</span>
+              <span class="badge">Postura Regular o Goofy</span>
+              <span class="badge badge-sun">8 Tonos de Piel y 7 Peinados</span>
+              <span class="badge badge-mint">Neoprenos, Lycras y Bañadores</span>
+            </div>
+          </div>
+
+          <img
+            src="/assets/screenshots/character_editor.png"
+            alt="Editor de Surfista"
+            style="border-radius:var(--r-l); border:1px solid var(--stroke-strong); cursor:zoom-in;"
+            data-lightbox="Personaliza el cuerpo, peinado, postura y traje de tu surfista"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Las 4 Tiendas Locales -->
+      <div style="margin-top:16px;">
+        <h3 style="font-size:clamp(1.4rem, 3vw, 1.75rem); font-weight:800; text-align:center; margin-bottom:6px;">Visita las 4 Tiendas Oficiales en la Playa</h3>
+        <p style="text-align:center; color:var(--text-secondary); font-size:0.93rem; margin-bottom:22px;">
+          Entra caminando a las chozas de surf de cada país para conocer a sus tenderos y comprar tablas o ropa exclusiva con el logo oficial de la playa:
+        </p>
+
+        <div class="shops-row">
+          {SHOPS.map((shop) => (
+            <div class="glass-card">
+              <div class="shop-logo"><img src={shop.logo} alt={shop.name} loading="lazy" /></div>
+              <span class="badge badge-sun">{shop.badge}</span>
+              <h4 style="font-size:1.06rem; font-weight:800; margin:8px 0 4px 0;">{shop.name}</h4>
+              <p style="font-size:0.82rem; color:var(--text-secondary);">{shop.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN 6: GALERÍA DE IMÁGENES
+       ===================================================================== -->
+  <section id="galeria" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="overline">CAPTURAS DEL JUEGO</div>
+        <h2 class="section-title">Mira SurfVR en acción</h2>
+        <p class="section-desc">Toca cualquier imagen para verla en tamaño completo y deslizar entre capturas.</p>
+      </div>
+
+      <div class="shots-grid">
+        {GALLERY_SHOTS.map((shot, idx) => (
+          <div class="shot-item" data-lightbox={shot.caption} data-gallery-idx={idx}>
+            <img src={shot.src} alt={shot.label} loading="lazy" />
+            <span>{shot.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECCIÓN 7: DESCARGA FINAL
+       ===================================================================== -->
+  <section id="descargar" class="section">
+    <div class="container">
+      <div class="glass-sheet" style="text-align:center; max-width:1000px; margin:0 auto;">
+        <span class="badge badge-aqua">¿LISTO PARA ENTRAR AL AGUA?</span>
+        <h2 class="section-title" style="margin-top:12px;">Descarga SurfVR Hoy</h2>
+        <p class="section-desc" style="max-width:650px; margin:0 auto 26px auto;">
+          Elige tu plataforma y comienza tu aventura en las olas:
+        </p>
+
+        <DownloadGrid centered={true} />
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>SurfVR</strong> — “Where you look is where you go.” · Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox con soporte táctil y botones Anterior / Siguiente -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-card">
+      <div class="lightbox-stage" id="lightbox-stage">
+        <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Anterior">‹</button>
+        <img id="lightbox-img" src="" alt="SurfVR" />
+        <button class="lightbox-nav next" id="lightbox-next" aria-label="Siguiente">›</button>
+      </div>
+      <div class="lightbox-bar">
+        <span id="lightbox-text" style="font-weight:700; font-size:0.9rem;"></span>
+        <button id="lightbox-close" class="btn-glass">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="toast-wrap" id="toast-wrap"></div>
+
+  <!-- Client-side Reactive Store & Mobile Gesture Engine -->
+  <script is:inline define:vars={{ BEACHES, BOARDS, PAINT_COLORS, GALLERY_SHOTS }}>
+    window.SURFVR_DOWNLOADS = {
+      windows: {
+        url: "/downloads/SurfVR-Windows-x64.exe",
+        filename: "SurfVR-Windows-x64.exe",
+        platformName: "Windows (.EXE)"
+      },
+      macos: {
+        url: "https://apps.apple.com/app/surfvr-macos",
+        external: true,
+        platformName: "Mac App Store"
+      },
+      iphone: {
+        url: "https://apps.apple.com/app/surfvr-ios",
+        external: true,
+        platformName: "App Store (iPhone)"
+      },
+      android: {
+        url: "/downloads/SurfVR-Android.apk",
+        filename: "SurfVR-Android.apk",
+        platformName: "Android (.APK)"
+      }
+    };
+
+    (function () {
+      "use strict";
+
+      const MISSIONS = {
+        easy: {
+          reward: 100,
+          list: [
+            "Realiza 2 giros limpios en la pared de la ola",
+            "Consigue 3.0 o más puntos en una ola",
+            "Surfea una ola hasta el final sin caerte"
+          ]
+        },
+        medium: {
+          reward: 250,
+          list: [
+            "Alcanza 30 km/h deslizándote por la pared",
+            "Consigue una ola de 5.5+ puntos",
+            "Completa 2 olas seguidas limpiamente"
+          ]
+        },
+        hard: {
+          reward: 500,
+          list: [
+            "Mantente 1.5 segundos dentro del tubo",
+            "Despega y aterriza un aéreo sobre la cresta",
+            "Consigue una calificación Excelente (8.0+ pts)"
+          ]
+        },
+        pro: {
+          reward: 1000,
+          list: [
+            "Aterriza un aéreo de 360 grados completo",
+            "Recorre 3 segundos profundos dentro del tubo",
+            "Logra una ola casi perfecta de 9.5+ puntos"
+          ]
+        }
+      };
+
+      const listeners = new Set();
+      const state = new Proxy({
+        money: 500,
+        selectedBeach: 1,
+        selectedBoard: 0,
+        ownedBoards: [0],
+        equippedBoard: 0,
+        tier: "easy",
+        checks: {
+          easy: [false, false, false],
+          medium: [false, false, false],
+          hard: [false, false, false],
+          pro: [false, false, false]
+        },
+        paid: { easy: false, medium: false, hard: false, pro: false },
+        paintZone: "fill",
+        paint: { fill: "#FFF9D2", rail: "#5CE6E0", fins: "#1FB5C1" }
+      }, {
+        set(target, key, val) {
+          target[key] = val;
+          listeners.forEach((fn) => fn());
+          return true;
+        }
+      });
+
+      function toast(text) {
+        const wrap = document.getElementById("toast-wrap");
+        if (!wrap) return;
+        const el = document.createElement("div");
+        el.className = "toast-pill";
+        el.textContent = text;
+        wrap.appendChild(el);
+        setTimeout(() => {
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 250);
+        }, 2600);
+      }
+
+      function updateWallet(diff) {
+        const val = document.getElementById("wallet-val");
+        const pop = document.getElementById("wallet-pop");
+        if (val) val.textContent = "$" + state.money.toLocaleString();
+        if (diff && pop) {
+          pop.textContent = (diff > 0 ? "+$" : "-$") + Math.abs(diff);
+          pop.classList.add("show");
+          setTimeout(() => pop.classList.remove("show"), 1000);
+        }
+      }
+
+      function pipsHTML(n, color) {
+        let s = "";
+        for (let i = 0; i < 5; i++) {
+          s += `<span class="pip ${i < n ? "on" : ""}" style="--pip-c:${color || "var(--aqua)"}"></span>`;
+        }
+        return s;
+      }
+
+      function updateBeachSelectionUI() {
+        const box = document.getElementById("beaches-container");
+        if (!box) return;
+        box.querySelectorAll("[data-beach]").forEach((card) => {
+          const idx = parseInt(card.getAttribute("data-beach"), 10);
+          card.classList.toggle("selected", idx === state.selectedBeach);
+        });
+        document.querySelectorAll("[data-beach-dot]").forEach((dot) => {
+          const idx = parseInt(dot.getAttribute("data-beach-dot"), 10);
+          dot.classList.toggle("active", idx === state.selectedBeach);
+        });
+      }
+
+      function renderBoards(scrollIntoViewOnMobile = false) {
+        const row = document.getElementById("pedestals-row");
+        if (!row) return;
+        row.innerHTML = BOARDS.map((b, i) => {
+          const owned = state.ownedBoards.includes(i);
+          return `
+            <div class="pedestal-card ${state.selectedBoard === i ? "selected" : ""}" data-board="${i}">
+              <svg viewBox="0 0 50 140" width="36" height="96">
+                <path d="M25 4 C42 26, 44 102, 25 136 C6 102, 8 26, 25 4 Z" fill="${b.fill}" stroke="${b.rail}" stroke-width="4"/>
+                <line x1="25" y1="6" x2="25" y2="134" stroke="rgba(7,19,29,0.28)" stroke-width="1.5"/>
+              </svg>
+              <div class="pedestal-base"></div>
+              <strong style="font-size:0.72rem;">${b.name}</strong>
+              <span class="badge ${owned ? "badge-mint" : "badge-sun"}" style="padding:2px 7px; font-size:0.64rem;">
+                ${owned ? "Tuya" : "$" + b.price}
+              </span>
+            </div>
+          `;
+        }).join("");
+
+        row.querySelectorAll("[data-board]").forEach((el) => {
+          el.addEventListener("click", () => {
+            state.selectedBoard = parseInt(el.getAttribute("data-board"), 10);
+          });
+        });
+
+        if (scrollIntoViewOnMobile) {
+          const activeCard = row.querySelector(`[data-board="${state.selectedBoard}"]`);
+          activeCard?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+
+        const b = BOARDS[state.selectedBoard];
+        const owned = state.ownedBoards.includes(state.selectedBoard);
+        document.getElementById("board-step").textContent = `TABLA ${state.selectedBoard + 1} DE ${BOARDS.length}`;
+        document.getElementById("board-title").textContent = b.name;
+        document.getElementById("board-measures").textContent = b.measures;
+        document.getElementById("board-story").textContent = b.story;
+        document.getElementById("board-where").textContent = b.where;
+
+        const pill = document.getElementById("board-price-pill");
+        pill.className = "badge " + (owned ? "badge-mint" : "badge-sun");
+        pill.textContent = owned ? "✓ EN TU COLECCIÓN" : "PRECIO: $" + b.price;
+
+        document.getElementById("board-badges").innerHTML = b.badges.map((t) => `<span class="badge">${t}</span>`).join("");
+        document.getElementById("feel-turn").innerHTML = pipsHTML(b.stats[0]);
+        document.getElementById("feel-stab").innerHTML = pipsHTML(b.stats[1]);
+        document.getElementById("feel-pad").innerHTML = pipsHTML(b.stats[2]);
+        document.getElementById("feel-big").innerHTML = pipsHTML(b.stats[3]);
+        document.getElementById("feel-small").innerHTML = pipsHTML(b.stats[4]);
+
+        const btn = document.getElementById("board-buy-btn");
+        if (owned) {
+          btn.textContent = state.equippedBoard === state.selectedBoard ? "✓ Equipada para surfear" : "Equipar esta tabla →";
+        } else if (state.money >= b.price) {
+          btn.textContent = `Desbloquear ${b.name} por $${b.price} →`;
+        } else {
+          btn.textContent = `Faltan $${b.price - state.money} (Toca para ganar +$${b.price - state.money})`;
+        }
+      }
+
+      function renderMissions() {
+        const box = document.getElementById("missions-container");
+        if (!box) return;
+        const data = MISSIONS[state.tier];
+        const arr = state.checks[state.tier];
+
+        box.innerHTML = data.list.map((txt, i) => `
+          <div class="mission-item ${arr[i] ? "done" : ""}" data-m="${i}">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span class="check-circle">${arr[i] ? "✓" : ""}</span>
+              <span style="font-size:0.86rem; font-weight:600;">${txt}</span>
+            </div>
+            <span class="badge ${arr[i] ? "badge-mint" : ""}">${arr[i] ? "¡Logrado!" : "0/1"}</span>
+          </div>
+        `).join("");
+
+        box.querySelectorAll("[data-m]").forEach((row) => {
+          row.addEventListener("click", () => {
+            const i = parseInt(row.getAttribute("data-m"), 10);
+            arr[i] = !arr[i];
+            if (arr.every(Boolean) && !state.paid[state.tier]) {
+              state.paid[state.tier] = true;
+              state.money = state.money + data.reward;
+              updateWallet(data.reward);
+              toast(`¡Desafío completado! Ganaste +$${data.reward} para comprar tablas`);
+            }
+            renderMissions();
+            renderBoards();
+          });
+        });
+      }
+
+      function renderPaint() {
+        document.getElementById("paint-fill")?.setAttribute("fill", state.paint.fill);
+        document.getElementById("paint-rail")?.setAttribute("fill", state.paint.rail);
+        document.getElementById("paint-fins")?.setAttribute("fill", state.paint.fins);
+
+        const grid = document.getElementById("palette-grid");
+        if (!grid) return;
+        const cur = state.paint[state.paintZone];
+        grid.innerHTML = PAINT_COLORS.map((c) => `
+          <button class="swatch-btn ${cur.toLowerCase() === c.toLowerCase() ? "active" : ""}"
+                  style="background:${c}" data-color="${c}" aria-label="Color ${c}"></button>
+        `).join("");
+
+        grid.querySelectorAll("[data-color]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            state.paint = { ...state.paint, [state.paintZone]: btn.getAttribute("data-color") };
+          });
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // 1. Bind configurable download links + Smart Mobile OS Detection
+        document.querySelectorAll("[data-download-platform]").forEach((a) => {
+          const k = a.getAttribute("data-download-platform");
+          const cfg = window.SURFVR_DOWNLOADS && window.SURFVR_DOWNLOADS[k];
+          if (!cfg) return;
+          a.setAttribute("href", cfg.url);
+          if (cfg.external) {
+            a.setAttribute("target", "_blank");
+            a.setAttribute("rel", "noopener noreferrer");
+          } else if (cfg.filename) {
+            a.setAttribute("download", cfg.filename);
+          }
+          a.addEventListener("click", () => toast(`Abriendo descarga para ${cfg.platformName}`));
+        });
+
+        const ua = navigator.userAgent || "";
+        const smartWrap = document.getElementById("smart-device-cta");
+        const smartLink = document.getElementById("smart-device-link");
+        const smartTitle = document.getElementById("smart-device-title");
+        const smartBadge = document.getElementById("smart-device-badge");
+        if (smartWrap && smartLink && smartTitle && smartBadge) {
+          if (/iPhone|iPad|iPod/i.test(ua)) {
+            smartWrap.classList.add("visible");
+            smartLink.href = window.SURFVR_DOWNLOADS.iphone.url;
+            smartLink.target = "_blank";
+            smartTitle.textContent = "SurfVR para iPhone & Visor VR";
+            smartBadge.textContent = "App Store →";
+          } else if (/Android/i.test(ua)) {
+            smartWrap.classList.add("visible");
+            smartLink.href = window.SURFVR_DOWNLOADS.android.url;
+            smartLink.setAttribute("download", window.SURFVR_DOWNLOADS.android.filename);
+            smartTitle.textContent = "SurfVR para Android (.APK)";
+            smartBadge.textContent = "Descargar .APK →";
+          }
+        }
+
+        // 2. Mobile Menu Drawer (with auto-close on link click)
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+        const iconBars = document.getElementById("menu-icon-bars");
+        const iconClose = document.getElementById("menu-icon-close");
+        function setMenuOpen(open) {
+          if (!navLinks) return;
+          navLinks.classList.toggle("open", open);
+          if (iconBars) iconBars.style.display = open ? "none" : "block";
+          if (iconClose) iconClose.style.display = open ? "block" : "none";
+        }
+        menuToggle?.addEventListener("click", () => {
+          setMenuOpen(!navLinks?.classList.contains("open"));
+        });
+        document.querySelectorAll("[data-nav-link]").forEach((link) => {
+          link.addEventListener("click", () => setMenuOpen(false));
+        });
+
+        // 3. Mobile Bottom App Dock Active Scroll-Spy
+        const dockItems = document.querySelectorAll("[data-dock-target]");
+        const observedSections = ["inicio", "modos", "playas", "tablas", "descargar"]
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+
+        if ("IntersectionObserver" in window && observedSections.length) {
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const id = entry.target.id;
+                dockItems.forEach((item) => {
+                  if (!item.classList.contains("dock-cta")) {
+                    item.classList.toggle("active", item.getAttribute("data-dock-target") === id);
+                  }
+                });
+              }
+            });
+          }, { rootMargin: "-35% 0px -50% 0px" });
+          observedSections.forEach((sec) => io.observe(sec));
+        }
+
+        // 4. Wallet click bonus
+        document.getElementById("wallet-btn")?.addEventListener("click", () => {
+          state.money = state.money + 250;
+          updateWallet(250);
+          renderBoards();
+          toast("+$250 añadidos a tu billetera de playa");
+        });
+
+        // 5. Hero Strip Switcher
+        document.querySelectorAll("[data-shot]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("[data-shot]").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            document.getElementById("hero-img").src = btn.getAttribute("data-shot");
+            document.getElementById("hero-pill-top").textContent = btn.getAttribute("data-top");
+            document.getElementById("hero-pill-bot").textContent = btn.getAttribute("data-bot");
+          });
+        });
+
+        // 6. Wave Highlights Carousel Dots Sync
+        const hlCarousel = document.getElementById("highlights-carousel");
+        const hlDots = document.querySelectorAll("[data-carousel-dot]");
+        if (hlCarousel && hlDots.length) {
+          hlCarousel.addEventListener("scroll", () => {
+            const idx = Math.round(hlCarousel.scrollLeft / (hlCarousel.clientWidth * 0.8));
+            hlDots.forEach((d, i) => d.classList.toggle("active", i === idx));
+          }, { passive: true });
+          hlDots.forEach((dot) => {
+            dot.addEventListener("click", () => {
+              const i = parseInt(dot.getAttribute("data-carousel-dot"), 10);
+              const cards = hlCarousel.querySelectorAll(".highlight-card");
+              cards[i]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+            });
+          });
+        }
+
+        // 7. Mode Switcher (Campaña vs Free Surf)
+        document.querySelectorAll("[data-mode-btn]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("[data-mode-btn]").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const m = btn.getAttribute("data-mode-btn");
+            document.getElementById("panel-campana").style.display = m === "campana" ? "grid" : "none";
+            document.getElementById("panel-freesurf").style.display = m === "freesurf" ? "grid" : "none";
+          });
+        });
+
+        // 8. Mission Tier
+        document.querySelectorAll("[data-tier]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("[data-tier]").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            state.tier = btn.getAttribute("data-tier");
+            renderMissions();
+          });
+        });
+
+        // 9. Free Surf Start Cards
+        document.querySelectorAll("[data-start-pick]").forEach((card) => {
+          card.addEventListener("click", () => {
+            document.querySelectorAll("[data-start-pick]").forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+            toast("Inicio elegido: " + card.getAttribute("data-start-pick"));
+          });
+        });
+
+        // 10. Beaches Selection & Mobile Snap Carousel Sync
+        const beachesBox = document.getElementById("beaches-container");
+        beachesBox?.querySelectorAll("[data-beach]").forEach((card) => {
+          card.addEventListener("click", () => {
+            state.selectedBeach = parseInt(card.getAttribute("data-beach"), 10);
+            toast("Destino elegido: " + BEACHES[state.selectedBeach].name);
+            card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          });
+        });
+        document.querySelectorAll("[data-beach-dot]").forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const i = parseInt(dot.getAttribute("data-beach-dot"), 10);
+            state.selectedBeach = i;
+            const target = beachesBox?.querySelector(`[data-beach="${i}"]`);
+            target?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          });
+        });
+
+        // 11. Board Prev/Next Arrows & Buy / Equip
+        document.getElementById("board-prev-btn")?.addEventListener("click", () => {
+          state.selectedBoard = (state.selectedBoard - 1 + BOARDS.length) % BOARDS.length;
+          renderBoards(true);
+        });
+        document.getElementById("board-next-btn")?.addEventListener("click", () => {
+          state.selectedBoard = (state.selectedBoard + 1) % BOARDS.length;
+          renderBoards(true);
+        });
+
+        document.getElementById("board-buy-btn")?.addEventListener("click", () => {
+          const i = state.selectedBoard;
+          const b = BOARDS[i];
+          if (state.ownedBoards.includes(i)) {
+            state.equippedBoard = i;
+            toast(`¡Equipaste tu ${b.name}!`);
+          } else if (state.money >= b.price) {
+            state.money = state.money - b.price;
+            state.ownedBoards = [...state.ownedBoards, i];
+            state.equippedBoard = i;
+            updateWallet(-b.price);
+            toast(`¡Desbloqueaste la tabla ${b.name}!`);
+          } else {
+            const diff = b.price - state.money;
+            state.money = state.money + diff;
+            updateWallet(diff);
+            toast(`Recompensa de salvavidas: +$${diff}. ¡Ya puedes desbloquear la ${b.name}!`);
+          }
+          renderBoards();
+        });
+
+        // 12. Paint Zone
+        document.querySelectorAll("[data-zone]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll("[data-zone]").forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            state.paintZone = btn.getAttribute("data-zone");
+          });
+        });
+
+        document.getElementById("reset-paint")?.addEventListener("click", () => {
+          state.paint = { fill: "#FFF9D2", rail: "#5CE6E0", fins: "#1FB5C1" };
+          toast("Colores originales restaurados");
+        });
+
+        // 13. Touch Lightbox with Prev / Next & Swipe Gestures
+        const lb = document.getElementById("lightbox");
+        const lbImg = document.getElementById("lightbox-img");
+        const lbTxt = document.getElementById("lightbox-text");
+        let currentGalleryIdx = 0;
+
+        function openLB(src, txt, idx) {
+          if (typeof idx === "number") currentGalleryIdx = idx;
+          lbImg.src = src;
+          lbTxt.textContent = txt || "SurfVR";
+          lb.classList.add("open");
+        }
+
+        function stepGallery(dir) {
+          currentGalleryIdx = (currentGalleryIdx + dir + GALLERY_SHOTS.length) % GALLERY_SHOTS.length;
+          const item = GALLERY_SHOTS[currentGalleryIdx];
+          lbImg.src = item.src;
+          lbTxt.textContent = item.caption;
+        }
+
+        document.querySelectorAll("[data-lightbox]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const img = el.tagName === "IMG" ? el : el.querySelector("img");
+            const gIdx = el.hasAttribute("data-gallery-idx") ? parseInt(el.getAttribute("data-gallery-idx"), 10) : 0;
+            if (img) openLB(img.src, el.getAttribute("data-lightbox"), gIdx);
+          });
+        });
+
+        document.getElementById("hero-open-lightbox")?.addEventListener("click", () => {
+          openLB(document.getElementById("hero-img").src, "SurfVR Gameplay", 0);
+        });
+        document.getElementById("lightbox-prev")?.addEventListener("click", (e) => { e.stopPropagation(); stepGallery(-1); });
+        document.getElementById("lightbox-next")?.addEventListener("click", (e) => { e.stopPropagation(); stepGallery(1); });
+        document.getElementById("lightbox-close")?.addEventListener("click", () => lb.classList.remove("open"));
+        lb?.addEventListener("click", (e) => { if (e.target === lb) lb.classList.remove("open"); });
+
+        let touchStartX = 0;
+        const lbStage = document.getElementById("lightbox-stage");
+        lbStage?.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        lbStage?.addEventListener("touchend", (e) => {
+          const dx = e.changedTouches[0].screenX - touchStartX;
+          if (Math.abs(dx) > 40) stepGallery(dx < 0 ? 1 : -1);
+        }, { passive: true });
+
+        listeners.add(() => {
+          updateBeachSelectionUI();
+          renderBoards();
+          renderPaint();
+        });
+
+        updateBeachSelectionUI();
+        renderBoards();
+        renderMissions();
+        renderPaint();
+      });
+    })();
+  </script>
+</Layout>
