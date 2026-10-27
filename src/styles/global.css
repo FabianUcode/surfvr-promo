@@ -613,6 +613,147 @@ button {
 .dl-win .dl-logo { color: #38BDF8; }
 .dl-apk .dl-logo { color: #34D399; }
 
+/* Split Windows Card + Architecture Selector Dropdown */
+.dl-win-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.dl-split-card {
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0;
+  overflow: hidden;
+}
+
+.dl-split-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 10px 13px 15px;
+  min-width: 0;
+}
+
+.dl-split-arrow {
+  width: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--text-secondary);
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.dl-split-arrow:hover {
+  background: rgba(56, 189, 248, 0.12);
+  color: #fff;
+}
+
+.dl-split-arrow svg {
+  transition: transform 0.2s ease;
+}
+
+.dl-win-wrap.open .dl-split-arrow {
+  background: rgba(56, 189, 248, 0.16);
+  color: #38BDF8;
+}
+
+.dl-win-wrap.open .dl-split-arrow svg {
+  transform: rotate(180deg);
+}
+
+.dl-arch-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  min-width: 235px;
+  z-index: 80;
+  background: rgba(11, 20, 29, 0.98);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 6px;
+  box-shadow: var(--specular-top), var(--shadow-float);
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dl-win-wrap.open .dl-arch-menu {
+  display: flex;
+}
+
+.dl-arch-header {
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  padding: 4px 8px 2px 8px;
+}
+
+.dl-arch-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.dl-arch-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dl-arch-item.active {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.28);
+}
+
+.dl-arch-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dl-arch-detected {
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.dl-arch-sub {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+}
+
+.dl-arch-check {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #38BDF8;
+  opacity: 0;
+}
+
+.dl-arch-item.active .dl-arch-check {
+  opacity: 1;
+}
+
 .dl-info {
   display: flex;
   flex-direction: column;
@@ -1474,6 +1615,24 @@ button {
     padding: 10px 10px;
     gap: 8px;
     border-radius: 14px;
+  }
+
+  .dl-split-card {
+    padding: 0;
+    gap: 0;
+  }
+
+  .dl-split-main {
+    padding: 10px 6px 10px 10px;
+    gap: 8px;
+  }
+
+  .dl-split-arrow {
+    width: 30px;
+  }
+
+  .dl-arch-menu {
+    min-width: min(240px, calc(100vw - 32px));
   }
 
   .dl-logo {

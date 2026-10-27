@@ -8,7 +8,8 @@ import {
   BEACHES,
   BOARDS,
   SHOPS,
-  GALLERY_SHOTS
+  GALLERY_SHOTS,
+  WINDOWS_VERSIONS
 } from '../data/surfvr';
 ---
 
@@ -492,12 +493,17 @@ import {
   <div class="toast-wrap" id="toast-wrap"></div>
 
   <!-- Client-side Reactive Store & Mobile Gesture Engine -->
-  <script is:inline define:vars={{ BEACHES, BOARDS, GALLERY_SHOTS }}>
+  <script is:inline define:vars={{ BEACHES, BOARDS, GALLERY_SHOTS, WINDOWS_VERSIONS }}>
     window.SURFVR_DOWNLOADS = {
       windows: {
-        url: "https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=sharing",
+        url: WINDOWS_VERSIONS.x64.url,
         external: true,
-        platformName: "Windows (.EXE)"
+        platformName: "Windows x64 (.EXE)"
+      },
+      windows_arm: {
+        url: WINDOWS_VERSIONS.arm64.url,
+        external: true,
+        platformName: "Windows ARM64 (.EXE)"
       },
       macos: {
         url: "https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing",
@@ -718,7 +724,7 @@ import {
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        // 1. Bind configurable download links + Smart Mobile OS Detection
+        // 1. Bind configurable download links + Auto-Detect Windows Architecture (x64 vs ARM64)
         document.querySelectorAll("[data-download-platform]").forEach((a) => {
           const k = a.getAttribute("data-download-platform");
           const cfg = window.SURFVR_DOWNLOADS && window.SURFVR_DOWNLOADS[k];
@@ -733,7 +739,82 @@ import {
           a.addEventListener("click", () => toast(`Abriendo descarga para ${cfg.platformName}`));
         });
 
+        let selectedWinArch = "x64";
+        let detectedWinArch = "x64";
+
+        function applyWindowsArch(arch, isAutoDetected = false) {
+          const ver = WINDOWS_VERSIONS[arch] || WINDOWS_VERSIONS.x64;
+          selectedWinArch = ver.arch;
+          if (isAutoDetected) detectedWinArch = ver.arch;
+
+          document.querySelectorAll("[data-win-primary-link]").forEach((link) => {
+            link.setAttribute("href", ver.url);
+          });
+          document.querySelectorAll("[data-win-primary-name]").forEach((el) => {
+            el.textContent = ver.label;
+          });
+          document.querySelectorAll("[data-win-primary-tag]").forEach((el) => {
+            el.textContent = ver.shortTag;
+          });
+          document.querySelectorAll("[data-win-arch-option]").forEach((item) => {
+            item.classList.toggle("active", item.getAttribute("data-win-arch-option") === ver.arch);
+          });
+          document.querySelectorAll("[data-win-detected-badge]").forEach((badge) => {
+            badge.style.display = badge.getAttribute("data-win-detected-badge") === detectedWinArch ? "inline-flex" : "none";
+          });
+        }
+
+        // Detect Windows ARM64 vs x64 automatically from UA + User-Agent Client Hints
         const ua = navigator.userAgent || "";
+        if (/arm64|aarch64|WoA/i.test(ua)) {
+          applyWindowsArch("arm64", true);
+        } else {
+          applyWindowsArch("x64", true);
+        }
+        if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
+          navigator.userAgentData.getHighEntropyValues(["architecture"]).then((hints) => {
+            if (hints && hints.architecture && /arm/i.test(hints.architecture)) {
+              applyWindowsArch("arm64", true);
+            } else if (hints && hints.architecture) {
+              applyWindowsArch("x64", true);
+            }
+          }).catch(() => {});
+        }
+
+        // Windows Split Button & Dropdown Selector Logic
+        document.querySelectorAll("[data-win-primary-link]").forEach((link) => {
+          link.addEventListener("click", () => {
+            const ver = WINDOWS_VERSIONS[selectedWinArch];
+            toast(`Abriendo descarga para ${ver.label} (.EXE)`);
+          });
+        });
+
+        document.querySelectorAll("[data-win-dropdown-toggle]").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const wrap = btn.closest("[data-win-dropdown-wrap]");
+            const isOpen = wrap?.classList.contains("open");
+            document.querySelectorAll("[data-win-dropdown-wrap]").forEach((w) => w.classList.remove("open"));
+            if (wrap && !isOpen) wrap.classList.add("open");
+          });
+        });
+
+        document.querySelectorAll("[data-win-arch-option]").forEach((opt) => {
+          opt.addEventListener("click", () => {
+            const arch = opt.getAttribute("data-win-arch-option");
+            applyWindowsArch(arch, false);
+            document.querySelectorAll("[data-win-dropdown-wrap]").forEach((w) => w.classList.remove("open"));
+            toast(`Versión seleccionada: ${WINDOWS_VERSIONS[arch].label}`);
+          });
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!e.target.closest("[data-win-dropdown-wrap]")) {
+            document.querySelectorAll("[data-win-dropdown-wrap]").forEach((w) => w.classList.remove("open"));
+          }
+        });
+
         const smartWrap = document.getElementById("smart-device-cta");
         const smartLink = document.getElementById("smart-device-link");
         const smartTitle = document.getElementById("smart-device-title");

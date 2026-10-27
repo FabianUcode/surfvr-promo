@@ -6,25 +6,73 @@ const { centered = false } = Astro.props;
 ---
 
 <div class="dl-grid" style={centered ? 'max-width:860px; margin:0 auto;' : ''}>
-  <!-- 1. PC / WINDOWS (.EXE) -->
-  <a
-    href="https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=sharing"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="dl-card dl-win"
-    data-download-platform="windows"
-  >
-    <div class="dl-logo">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/>
-      </svg>
+  <!-- 1. PC / WINDOWS (Auto-detects x64 vs ARM64 + Split Dropdown Selector) -->
+  <div class="dl-win-wrap" data-win-dropdown-wrap>
+    <div class="dl-card dl-win dl-split-card">
+      <a
+        href="https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="dl-split-main"
+        data-win-primary-link
+      >
+        <div class="dl-logo">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3h8.5v8.5H3V3zm9.5 0H21v8.5h-8.5V3zM3 12.5h8.5V21H3v-8.5zm9.5 0H21V21h-8.5v-8.5z"/>
+          </svg>
+        </div>
+        <div class="dl-info">
+          <span class="dl-small">Descargar para PC</span>
+          <span class="dl-name" data-win-primary-name>Windows</span>
+          <span class="dl-tag" data-win-primary-tag>.EXE · x64</span>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        class="dl-split-arrow"
+        data-win-dropdown-toggle
+        aria-label="Seleccionar versión de Windows (x64 o ARM64)"
+        title="Cambiar versión de Windows (x64 / ARM64)"
+      >
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 7.5L10 12.5L15 7.5"/>
+        </svg>
+      </button>
     </div>
-    <div class="dl-info">
-      <span class="dl-small">Descargar para PC</span>
-      <span class="dl-name">Windows</span>
-      <span class="dl-tag">Instalador .EXE</span>
+
+    <!-- Dropdown Menu for Windows Architectures -->
+    <div class="dl-arch-menu" data-win-dropdown-menu>
+      <div class="dl-arch-header">Versión de Windows</div>
+      <a
+        href="https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="dl-arch-item active"
+        data-win-arch-option="x64"
+      >
+        <div>
+          <div class="dl-arch-title">Windows x64 <span class="dl-arch-detected" data-win-detected-badge="x64">Detectado</span></div>
+          <div class="dl-arch-sub">Intel / AMD · 64-bit (.EXE)</div>
+        </div>
+        <span class="dl-arch-check">✓</span>
+      </a>
+
+      <a
+        href="https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=drive_link"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="dl-arch-item"
+        data-win-arch-option="arm64"
+      >
+        <div>
+          <div class="dl-arch-title">Windows ARM64 <span class="dl-arch-detected" data-win-detected-badge="arm64" style="display:none;">Detectado</span></div>
+          <div class="dl-arch-sub">Snapdragon / ARM (.EXE)</div>
+        </div>
+        <span class="dl-arch-check">✓</span>
+      </a>
     </div>
-  </a>
+  </div>
 
   <!-- 2. macOS (.DMG Directo) -->
   <a

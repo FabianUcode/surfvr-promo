@@ -4,8 +4,25 @@
  * ============================================================================
  */
 
+export const WINDOWS_VERSIONS = {
+  x64: {
+    arch: 'x64',
+    url: 'https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing',
+    label: 'Windows x64',
+    sub: 'Intel / AMD · 64-bit (.EXE)',
+    shortTag: '.EXE · x64'
+  },
+  arm64: {
+    arch: 'arm64',
+    url: 'https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=drive_link',
+    label: 'Windows ARM64',
+    sub: 'Snapdragon / ARM (.EXE)',
+    shortTag: '.EXE · ARM64'
+  }
+};
+
 export interface DownloadPlatform {
-  key: 'windows' | 'macos' | 'iphone' | 'android';
+  key: 'windows' | 'windows_arm' | 'macos' | 'iphone' | 'android';
   url: string;
   filename?: string;
   external?: boolean;
@@ -18,11 +35,20 @@ export interface DownloadPlatform {
 export const DOWNLOADS: Record<string, DownloadPlatform> = {
   windows: {
     key: 'windows',
-    url: 'https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=sharing',
+    url: WINDOWS_VERSIONS.x64.url,
     external: true,
     smallLabel: 'Descargar para PC',
-    name: 'Windows',
-    tag: 'Instalador .EXE',
+    name: 'Windows x64',
+    tag: 'Instalador .EXE (64-bit)',
+    theme: 'win'
+  },
+  windows_arm: {
+    key: 'windows_arm',
+    url: WINDOWS_VERSIONS.arm64.url,
+    external: true,
+    smallLabel: 'Descargar para PC',
+    name: 'Windows ARM64',
+    tag: 'Instalador .EXE (ARM)',
     theme: 'win'
   },
   macos: {
