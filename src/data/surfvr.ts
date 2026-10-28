@@ -4,6 +4,102 @@
  * ============================================================================
  */
 
+export const GAME_VERSION = {
+  version: 'v0.4.2',
+  date: 'Octubre 2026',
+  label: 'Actualización v0.4.2 Disponible',
+  quickSummary: 'Mejoras en el rompimiento de las olas cerca de la orilla, nueva vista del faro en Nazaré y niveles de ayuda ajustables.'
+};
+
+export interface ChangelogChange {
+  type: 'new' | 'wave' | 'fix';
+  badge: string;
+  text: string;
+}
+
+export interface ChangelogRelease {
+  version: string;
+  date: string;
+  title: string;
+  isLatest?: boolean;
+  changes: ChangelogChange[];
+}
+
+export const CHANGELOG: ChangelogRelease[] = [
+  {
+    version: 'v0.4.2',
+    date: 'Reciente',
+    title: 'Olas más limpias en la orilla, Nazaré mejorado y niveles de ayuda',
+    isLatest: true,
+    changes: [
+      {
+        type: 'fix',
+        badge: '🛠️ Ola Arreglada',
+        text: 'Se arregló el cierre de las olas al llegar a la playa: ahora la espuma y la ola se disipan de forma natural antes de tocar la arena.'
+      },
+      {
+        type: 'wave',
+        badge: '🌊 Mejora en Playas',
+        text: 'Se mejoró la vista de Nazaré desde el agua: ahora la ola rompe justo frente al peñón y al famoso faro.'
+      },
+      {
+        type: 'new',
+        badge: '✨ Nuevo Control',
+        text: 'Se añadieron 4 niveles de ayuda al surfear (Desactivado, Bajo, Medio y Alto) y un nuevo menú de ajustes rápidos dentro de la pausa.'
+      },
+      {
+        type: 'fix',
+        badge: '🛠️ Rendimiento',
+        text: 'Se optimizó la fluidez general del océano y se corrigieron pequeños bugs al abrir y cerrar el menú de pausa con Esc.'
+      }
+    ]
+  },
+  {
+    version: 'v0.4.0',
+    date: 'Versión anterior',
+    title: 'Nuevo diseño visual, arena viva y corrientes en el mar',
+    changes: [
+      {
+        type: 'new',
+        badge: '✨ Nueva Interfaz',
+        text: 'Se renovaron todos los menús del juego con un diseño más limpio, velocímetro en vivo y marcador de olas más claro.'
+      },
+      {
+        type: 'wave',
+        badge: '🌊 Océano y Arena',
+        text: 'Se añadieron corrientes marinas visuales, espuma dinámica y arena húmeda que deja tus huellas al caminar por la orilla.'
+      },
+      {
+        type: 'fix',
+        badge: '🛠️ Cámara y Playa',
+        text: 'Se arregló el giro de la cámara al caminar por la arena y se eliminaron marcas raras que dejaba la tabla al llevarla bajo el brazo.'
+      }
+    ]
+  },
+  {
+    version: 'v0.3.0',
+    date: 'Lanzamiento Base',
+    title: 'Se añadieron las 7 tablas, las 5 playas reales y el Modo Campaña',
+    changes: [
+      {
+        type: 'new',
+        badge: '🏄 7 Tablas Añadidas',
+        text: 'Se añadieron 7 tablas con distinto comportamiento en el agua: Funboard, Softboard, Fish, Twin, Shortboard, Longboard y Gun.'
+      },
+      {
+        type: 'new',
+        badge: '🏝️ 5 Playas Reales',
+        text: 'Se añadieron Pipeline, Nazaré, Teahupo\'o, Chicama y Jeffreys Bay con condiciones variables del mar.'
+      },
+      {
+        type: 'new',
+        badge: '🛟 Modo Campaña y Tiendas',
+        text: 'Se añadió el modo Hop Into The Beach con misiones del salvavidas para ganar dinero y 4 tiendas oficiales en la playa.'
+      }
+    ]
+  }
+];
+
 export const WINDOWS_VERSIONS = {
   x64: {
     arch: 'x64',

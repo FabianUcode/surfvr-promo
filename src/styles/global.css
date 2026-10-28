@@ -296,6 +296,132 @@ button {
   object-fit: cover;
 }
 
+.nav-version-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  color: #6EE7B7;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: all 0.16s ease;
+}
+
+.nav-version-pill:hover {
+  background: rgba(52, 211, 153, 0.18);
+  border-color: rgba(52, 211, 153, 0.48);
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+}
+
+/* Hero Version Row & Quick Patch Notes Bar */
+.hero-top-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-version-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 8px;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: #6EE7B7;
+  font-size: 0.72rem;
+  font-weight: 800;
+  transition: all 0.16s ease;
+}
+
+.hero-version-link:hover {
+  background: rgba(52, 211, 153, 0.2);
+}
+
+.hero-patch-banner {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(15, 27, 38, 0.75);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Changelog Section */
+.changelog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+.changelog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.changelog-card.latest {
+  border-color: rgba(56, 189, 248, 0.34);
+  background: rgba(17, 32, 45, 0.88);
+}
+
+.changelog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.changelog-ver {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.changelog-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+}
+
+.changelog-item p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.48;
+}
+
 .hero-brand-head {
   display: flex;
   align-items: center;
@@ -1485,7 +1611,8 @@ button {
   .hero-layout,
   .mode-split,
   .quiver-grid,
-  .studio-grid {
+  .studio-grid,
+  .changelog-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .beaches-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }

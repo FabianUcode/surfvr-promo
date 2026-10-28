@@ -1,4 +1,5 @@
 ---
+import { GAME_VERSION } from '../data/surfvr';
 ---
 
 <!-- =====================================================================
@@ -6,26 +7,32 @@
      ===================================================================== -->
 <div class="nav-wrap">
   <nav class="navbar">
-    <a href="#inicio" class="brand">
-      <span class="brand-logo-wrap">
-        <img
-          src="/assets/logos/surfvr_logo.webp"
-          alt="SurfVR Logo"
-          width="36"
-          height="36"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </span>
-      <span>SurfVR</span>
-    </a>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="#inicio" class="brand">
+        <span class="brand-logo-wrap">
+          <img
+            src="/assets/logos/surfvr_logo.webp"
+            alt="SurfVR Logo"
+            width="36"
+            height="36"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </span>
+        <span>SurfVR</span>
+      </a>
+      <a href="#novedades" class="nav-version-pill" title="Ver notas de la última versión">
+        <span class="live-dot"></span>
+        <span>{GAME_VERSION.version}</span>
+      </a>
+    </div>
 
     <ul class="nav-links" id="nav-links">
+      <li><a href="#novedades" data-nav-link>Novedades {GAME_VERSION.version}</a></li>
       <li><a href="#olas" data-nav-link>Olas Realistas</a></li>
       <li><a href="#modos" data-nav-link>Campaña y Modos</a></li>
       <li><a href="#playas" data-nav-link>Las 5 Playas</a></li>
       <li><a href="#tablas" data-nav-link>7 Tablas</a></li>
-      <li><a href="#personalizacion" data-nav-link>Personalización</a></li>
       <li><a href="#galeria" data-nav-link>Galería</a></li>
     </ul>
 
@@ -59,11 +66,14 @@
     </svg>
     <span>Inicio</span>
   </a>
-  <a href="#modos" class="dock-item" data-dock-target="modos">
+  <a href="#novedades" class="dock-item" data-dock-target="novedades">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
     </svg>
-    <span>Campaña</span>
+    <span>{GAME_VERSION.version}</span>
   </a>
   <a href="#playas" class="dock-item" data-dock-target="playas">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">

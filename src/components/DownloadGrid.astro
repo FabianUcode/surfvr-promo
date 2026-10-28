@@ -1,4 +1,6 @@
 ---
+import { GAME_VERSION } from '../data/surfvr';
+
 interface Props {
   centered?: boolean;
 }
@@ -22,9 +24,9 @@ const { centered = false } = Astro.props;
           </svg>
         </div>
         <div class="dl-info">
-          <span class="dl-small">Descargar para PC</span>
+          <span class="dl-small">Descargar · {GAME_VERSION.version}</span>
           <span class="dl-name" data-win-primary-name>Windows x64</span>
-          <span class="dl-tag" data-win-primary-tag>.EXE · x64</span>
+          <span class="dl-tag" data-win-primary-tag>.EXE · x64 · {GAME_VERSION.version}</span>
         </div>
       </a>
 
@@ -43,7 +45,7 @@ const { centered = false } = Astro.props;
 
     <!-- Dropdown Menu for Windows Architectures -->
     <div class="dl-arch-menu" data-win-dropdown-menu>
-      <div class="dl-arch-header">Versión de Windows</div>
+      <div class="dl-arch-header">Versión de Windows ({GAME_VERSION.version})</div>
       <a
         href="https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing"
         target="_blank"
@@ -88,7 +90,7 @@ const { centered = false } = Astro.props;
       </svg>
     </div>
     <div class="dl-info">
-      <span class="dl-small">Descargar para Mac</span>
+      <span class="dl-small">Descargar · {GAME_VERSION.version}</span>
       <span class="dl-name">macOS Universal</span>
       <span class="dl-tag">.DMG · Apple Silicon & Intel</span>
     </div>
