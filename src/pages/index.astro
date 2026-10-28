@@ -121,15 +121,15 @@ import {
   <section id="novedades" class="section" style="padding-top:48px; padding-bottom:64px;">
     <div class="container">
       <div class="section-head" style="margin-bottom:32px;">
-        <div class="overline">HISTORIAL DE ACTUALIZACIONES · {GAME_VERSION.version}</div>
+        <div class="overline">ÚLTIMA ACTUALIZACIÓN · {GAME_VERSION.version}</div>
         <h2 class="section-title">¿Qué hay de nuevo en SurfVR?</h2>
         <p class="section-desc">
-          Actualizamos el juego constantemente con mejoras en las olas, nuevas funciones y corrección de bugs. Revisa qué versión tienes instalada y descarga siempre la más reciente:
+          Estos son los cambios incluidos en la última versión del juego ({GAME_VERSION.version}):
         </p>
       </div>
 
       <div class="changelog-grid">
-        {CHANGELOG.slice(0, 2).map((rel) => (
+        {CHANGELOG.slice(0, 1).map((rel) => (
           <div class={`glass-card changelog-card ${rel.isLatest ? 'latest' : ''}`}>
             <div class="changelog-head">
               <div class="changelog-ver">

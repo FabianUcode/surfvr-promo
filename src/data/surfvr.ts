@@ -53,28 +53,6 @@ export const CHANGELOG: ChangelogRelease[] = [
         text: 'Se optimizó la fluidez general del océano y se corrigieron pequeños bugs al abrir y cerrar el menú de pausa con Esc.'
       }
     ]
-  },
-  {
-    version: 'v0.4.0',
-    date: 'Versión anterior',
-    title: 'Nuevo diseño visual, arena viva y corrientes en el mar',
-    changes: [
-      {
-        type: 'new',
-        badge: '✨ Nueva Interfaz',
-        text: 'Se renovaron todos los menús del juego con un diseño más limpio, velocímetro en vivo y marcador de olas más claro.'
-      },
-      {
-        type: 'wave',
-        badge: '🌊 Océano y Arena',
-        text: 'Se añadieron corrientes marinas visuales, espuma dinámica y arena húmeda que deja tus huellas al caminar por la orilla.'
-      },
-      {
-        type: 'fix',
-        badge: '🛠️ Cámara y Playa',
-        text: 'Se arregló el giro de la cámara al caminar por la arena y se eliminaron marcas raras que dejaba la tabla al llevarla bajo el brazo.'
-      }
-    ]
   }
 ];
 

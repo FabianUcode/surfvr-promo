@@ -366,7 +366,7 @@ button {
 /* Changelog Section */
 .changelog-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   width: 100%;
 }
@@ -401,9 +401,9 @@ button {
 }
 
 .changelog-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .changelog-item {
@@ -1612,7 +1612,8 @@ button {
   .mode-split,
   .quiver-grid,
   .studio-grid,
-  .changelog-grid {
+  .changelog-grid,
+  .changelog-list {
     grid-template-columns: minmax(0, 1fr);
   }
   .beaches-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
