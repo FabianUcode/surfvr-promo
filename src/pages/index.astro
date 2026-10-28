@@ -28,7 +28,7 @@ import {
           <div class="hero-top-pills">
             <a href="#novedades" class="hero-version-link">
               <span class="live-dot"></span>
-              <span>VERSIÓN ACTUAL {GAME_VERSION.version} · VER NOVEDADES ↓</span>
+              <span>OPEN BETA OFICIAL · {GAME_VERSION.version} · VER NOVEDADES ↓</span>
             </a>
             <span class="badge badge-aqua">WINDOWS & MAC · IOS & ANDROID COMING SOON</span>
           </div>
@@ -61,13 +61,13 @@ import {
           </div>
 
           <!-- ZONA DE DESCARGAS -->
-          <div class="dl-label">Descarga oficial ({GAME_VERSION.version}) en tu plataforma</div>
+          <div class="dl-label">Descarga oficial Open Beta ({GAME_VERSION.version}) en tu plataforma</div>
           <DownloadGrid />
 
           <!-- Resumen rápido de la versión actual en la pantalla principal -->
           <div class="hero-patch-banner">
             <div style="font-size:0.8rem; color:var(--text-secondary); flex:1; min-width:200px;">
-              <strong style="color:#fff;">🆕 Parche {GAME_VERSION.version}:</strong> {GAME_VERSION.quickSummary}
+              <strong style="color:#fff;">🏄 Open Beta {GAME_VERSION.version}:</strong> {GAME_VERSION.quickSummary}
             </div>
             <a href="#novedades" class="badge badge-aqua" style="flex-shrink:0;">Ver qué cambió →</a>
           </div>
@@ -121,10 +121,10 @@ import {
   <section id="novedades" class="section" style="padding-top:48px; padding-bottom:64px;">
     <div class="container">
       <div class="section-head" style="margin-bottom:32px;">
-        <div class="overline">ÚLTIMA ACTUALIZACIÓN · {GAME_VERSION.version}</div>
+        <div class="overline">OPEN BETA OFICIAL · ÚLTIMA ACTUALIZACIÓN {GAME_VERSION.version}</div>
         <h2 class="section-title">¿Qué hay de nuevo en SurfVR?</h2>
         <p class="section-desc">
-          Estos son los cambios incluidos en la última versión del juego ({GAME_VERSION.version}):
+          SurfVR entra en beta abierta ({GAME_VERSION.version}): el juego está completo para jugar de principio a fin y seguimos puliéndolo con lo que nos cuenten.
         </p>
       </div>
 
@@ -134,7 +134,7 @@ import {
             <div class="changelog-head">
               <div class="changelog-ver">
                 <span>{rel.version}</span>
-                {rel.isLatest && <span class="badge badge-mint">Última versión</span>}
+                {rel.isLatest && <span class="badge badge-mint">Open Beta Oficial</span>}
               </div>
               <span style="font-size:0.75rem; font-weight:700; color:var(--text-tertiary);">{rel.date}</span>
             </div>

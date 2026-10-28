@@ -5,10 +5,10 @@
  */
 
 export const GAME_VERSION = {
-  version: 'v0.4.2',
-  date: 'Octubre 2026',
-  label: 'Actualización v0.4.2 Disponible',
-  quickSummary: 'Mejoras en el rompimiento de las olas cerca de la orilla, nueva vista del faro en Nazaré y niveles de ayuda ajustables.'
+  version: 'v0.5.0',
+  date: '28 de Octubre, 2026',
+  label: 'Open Beta Oficial · v0.5.0',
+  quickSummary: 'Open Beta: casita de surf, duck dive y turtle roll bajo la espuma, reloj del día y códigos para amigos.'
 };
 
 export interface ChangelogChange {
@@ -27,30 +27,30 @@ export interface ChangelogRelease {
 
 export const CHANGELOG: ChangelogRelease[] = [
   {
-    version: 'v0.4.2',
-    date: 'Reciente',
-    title: 'Olas más limpias en la orilla, Nazaré mejorado y niveles de ayuda',
+    version: 'v0.5.0',
+    date: '28 Oct 2026',
+    title: 'Open Beta: casita de surf, duck dive y turtle roll, reloj del día y códigos para amigos',
     isLatest: true,
     changes: [
       {
-        type: 'fix',
-        badge: '🛠️ Ola Arreglada',
-        text: 'Se arregló el cierre de las olas al llegar a la playa: ahora la espuma y la ola se disipan de forma natural antes de tocar la arena.'
-      },
-      {
         type: 'wave',
-        badge: '🌊 Mejora en Playas',
-        text: 'Se mejoró la vista de Nazaré desde el agua: ahora la ola rompe justo frente al peñón y al famoso faro.'
+        badge: '🏄 Bajo la espuma',
+        text: 'El duck dive ahora hunde la tabla mucho más y te deja más tiempo bajo la ola. Con tablas de 7\' o más haces turtle roll: te volteas bajo la tabla y dejas pasar la espuma por encima.'
       },
       {
         type: 'new',
-        badge: '✨ Nuevo Control',
-        text: 'Se añadieron 4 niveles de ayuda al surfear (Desactivado, Bajo, Medio y Alto) y un nuevo menú de ajustes rápidos dentro de la pausa.'
+        badge: '🌊 Casita de surf y día que avanza',
+        text: 'Junto a cada tienda hay una casita donde cambias entre las tablas y la ropa que ya compraste. El día avanza mientras surfeas (una hora por minuto) con un reloj en pantalla, y en Free Surf eliges si empiezas al amanecer, a mediodía o al atardecer.'
+      },
+      {
+        type: 'new',
+        badge: '✨ Para jugar mejor',
+        text: 'Los trucos repetidos se agrupan ("AIR 360 ×6"), la pantalla avisa cuánto resta la ayuda a tu puntuación y el nivel de ayuda se elige también desde el menú principal y se queda guardado. En primera persona puedes mirar alrededor manteniendo el clic derecho, y ahora hay códigos para regalar dinero a tus amigos.'
       },
       {
         type: 'fix',
-        badge: '🛠️ Rendimiento',
-        text: 'Se optimizó la fluidez general del océano y se corrigieron pequeños bugs al abrir y cerrar el menú de pausa con Esc.'
+        badge: '🛠️ Arreglos',
+        text: 'La ola ya no revienta sobre la arena, la espuma llega hasta el final de la ola, la tabla no se hunde al remar, tu ropa se mantiene en el modo historia, las recompensas de misiones no se pierden, la puntuación es más justa y el guardado de tu progreso es más robusto. También hay mejoras en VR, en la cámara libre y en las playas.'
       }
     ]
   }
