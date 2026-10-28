@@ -129,7 +129,7 @@ import {
       </div>
 
       <div class="changelog-grid">
-        {CHANGELOG.map((rel) => (
+        {CHANGELOG.slice(0, 2).map((rel) => (
           <div class={`glass-card changelog-card ${rel.isLatest ? 'latest' : ''}`}>
             <div class="changelog-head">
               <div class="changelog-ver">

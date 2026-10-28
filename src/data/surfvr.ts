@@ -75,28 +75,6 @@ export const CHANGELOG: ChangelogRelease[] = [
         text: 'Se arregló el giro de la cámara al caminar por la arena y se eliminaron marcas raras que dejaba la tabla al llevarla bajo el brazo.'
       }
     ]
-  },
-  {
-    version: 'v0.3.0',
-    date: 'Lanzamiento Base',
-    title: 'Se añadieron las 7 tablas, las 5 playas reales y el Modo Campaña',
-    changes: [
-      {
-        type: 'new',
-        badge: '🏄 7 Tablas Añadidas',
-        text: 'Se añadieron 7 tablas con distinto comportamiento en el agua: Funboard, Softboard, Fish, Twin, Shortboard, Longboard y Gun.'
-      },
-      {
-        type: 'new',
-        badge: '🏝️ 5 Playas Reales',
-        text: 'Se añadieron Pipeline, Nazaré, Teahupo\'o, Chicama y Jeffreys Bay con condiciones variables del mar.'
-      },
-      {
-        type: 'new',
-        badge: '🛟 Modo Campaña y Tiendas',
-        text: 'Se añadió el modo Hop Into The Beach con misiones del salvavidas para ganar dinero y 4 tiendas oficiales en la playa.'
-      }
-    ]
   }
 ];
 
