@@ -59,16 +59,17 @@ export const CHANGELOG: ChangelogRelease[] = [
 export const WINDOWS_VERSIONS = {
   x64: {
     arch: 'x64',
-    url: 'https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing',
+    url: 'https://drive.google.com/file/d/1IXVee81IrppJZVDrQPek1xT4yvW84CsM/view?usp=sharing',
     label: 'Windows x64',
     sub: 'Intel / AMD · 64-bit (.EXE)',
     shortTag: '.EXE · x64'
   },
   arm64: {
     arch: 'arm64',
-    url: 'https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=drive_link',
+    url: '#',
+    disabled: true,
     label: 'Windows ARM64',
-    sub: 'Snapdragon / ARM (.EXE)',
+    sub: 'Snapdragon / ARM (Coming soon...)',
     shortTag: '.EXE · ARM64'
   }
 };
@@ -94,18 +95,9 @@ export const DOWNLOADS: Record<string, DownloadPlatform> = {
     tag: 'Instalador .EXE (64-bit)',
     theme: 'win'
   },
-  windows_arm: {
-    key: 'windows_arm',
-    url: WINDOWS_VERSIONS.arm64.url,
-    external: true,
-    smallLabel: 'Descargar para PC',
-    name: 'Windows ARM64',
-    tag: 'Instalador .EXE (ARM)',
-    theme: 'win'
-  },
   macos: {
     key: 'macos',
-    url: 'https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing',
+    url: 'https://drive.google.com/file/d/1amJvg5yeSVco4GC-e-Mqs25FxgkB1uDi/view?usp=sharing',
     external: true,
     smallLabel: 'Descargar para Mac',
     name: 'macOS',

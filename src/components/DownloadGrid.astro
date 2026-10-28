@@ -8,11 +8,11 @@ const { centered = false } = Astro.props;
 ---
 
 <div class="dl-grid" style={centered ? 'max-width:860px; margin:0 auto;' : ''}>
-  <!-- 1. PC / WINDOWS (Auto-detects x64 vs ARM64 + Split Dropdown Selector) -->
+  <!-- 1. PC / WINDOWS (Windows x64 activo, ARM64 deshabilitado temporalmente) -->
   <div class="dl-win-wrap" data-win-dropdown-wrap>
     <div class="dl-card dl-win dl-split-card">
       <a
-        href="https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing"
+        href="https://drive.google.com/file/d/1IXVee81IrppJZVDrQPek1xT4yvW84CsM/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
         class="dl-split-main"
@@ -34,8 +34,8 @@ const { centered = false } = Astro.props;
         type="button"
         class="dl-split-arrow"
         data-win-dropdown-toggle
-        aria-label="Seleccionar versión de Windows (x64 o ARM64)"
-        title="Cambiar versión de Windows (x64 / ARM64)"
+        aria-label="Seleccionar versión de Windows"
+        title="Ver versiones de Windows"
       >
         <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 7.5L10 12.5L15 7.5"/>
@@ -47,38 +47,36 @@ const { centered = false } = Astro.props;
     <div class="dl-arch-menu" data-win-dropdown-menu>
       <div class="dl-arch-header">Versión de Windows ({GAME_VERSION.version})</div>
       <a
-        href="https://drive.google.com/file/d/1YnnLvRCxKmyi1v52z1-RPT34aDebW5K9/view?usp=sharing"
+        href="https://drive.google.com/file/d/1IXVee81IrppJZVDrQPek1xT4yvW84CsM/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
         class="dl-arch-item active"
         data-win-arch-option="x64"
       >
         <div>
-          <div class="dl-arch-title">Windows x64 <span class="dl-arch-detected" data-win-detected-badge="x64">Detectado</span></div>
+          <div class="dl-arch-title">Windows x64 <span class="dl-arch-detected">Disponible</span></div>
           <div class="dl-arch-sub">Intel / AMD · 64-bit (.EXE)</div>
         </div>
         <span class="dl-arch-check">✓</span>
       </a>
 
-      <a
-        href="https://drive.google.com/file/d/1IkY6FwfZJidIM3eZkM0fSaNDO-UQRrYn/view?usp=drive_link"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="dl-arch-item"
-        data-win-arch-option="arm64"
+      <button
+        type="button"
+        class="dl-arch-item dl-coming-soon"
+        data-coming-soon="Windows ARM64"
+        style="width:100%; text-align:left; opacity:0.52; cursor:not-allowed; background:transparent;"
       >
         <div>
-          <div class="dl-arch-title">Windows ARM64 <span class="dl-arch-detected" data-win-detected-badge="arm64" style="display:none;">Detectado</span></div>
+          <div class="dl-arch-title">Windows ARM64 <span class="dl-tag-soon" style="font-size:0.62rem; margin-left:4px;">Coming soon...</span></div>
           <div class="dl-arch-sub">Snapdragon / ARM (.EXE)</div>
         </div>
-        <span class="dl-arch-check">✓</span>
-      </a>
+      </button>
     </div>
   </div>
 
   <!-- 2. macOS Universal (.DMG Directo para Apple Silicon M1-M4 & Intel) -->
   <a
-    href="https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing"
+    href="https://drive.google.com/file/d/1amJvg5yeSVco4GC-e-Mqs25FxgkB1uDi/view?usp=sharing"
     target="_blank"
     rel="noopener noreferrer"
     class="dl-card dl-apple"

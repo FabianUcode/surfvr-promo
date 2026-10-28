@@ -586,7 +586,7 @@ import {
         platformName: "Windows ARM64 (.EXE)"
       },
       macos: {
-        url: "https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing",
+        url: "https://drive.google.com/file/d/1amJvg5yeSVco4GC-e-Mqs25FxgkB1uDi/view?usp=sharing",
         external: true,
         platformName: "macOS (.DMG)"
       },
@@ -844,22 +844,9 @@ import {
           });
         }
 
-        // Detect Windows ARM64 vs x64 automatically from UA + User-Agent Client Hints
+        // Windows x64 active by default (ARM64 temporarily disabled)
         const ua = navigator.userAgent || "";
-        if (/arm64|aarch64|WoA/i.test(ua)) {
-          applyWindowsArch("arm64", true);
-        } else {
-          applyWindowsArch("x64", true);
-        }
-        if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === "function") {
-          navigator.userAgentData.getHighEntropyValues(["architecture"]).then((hints) => {
-            if (hints && hints.architecture && /arm/i.test(hints.architecture)) {
-              applyWindowsArch("arm64", true);
-            } else if (hints && hints.architecture) {
-              applyWindowsArch("x64", true);
-            }
-          }).catch(() => {});
-        }
+        applyWindowsArch("x64", true);
 
         // Windows Split Button & Dropdown Selector Logic
         document.querySelectorAll("[data-win-primary-link]").forEach((link) => {
