@@ -23,11 +23,22 @@ import {
     <div class="container">
       <div class="hero-layout">
         <div>
-          <span class="badge badge-aqua">DISPONIBLE EN PC · MAC · IPHONE · ANDROID</span>
-          <h1 class="hero-title">SurfVR</h1>
+          <span class="badge badge-aqua">DISPONIBLE EN WINDOWS & MAC · IOS & ANDROID COMING SOON</span>
+          <div class="hero-brand-head">
+            <img
+              src="/assets/logos/surfvr_logo.webp"
+              alt="SurfVR — Official Surf Game & Simulator Logo"
+              width="76"
+              height="76"
+              class="hero-emblem"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <h1 class="hero-title" style="margin:0;">SurfVR</h1>
+          </div>
           <p class="hero-quote">“Where you look is where you go.”</p>
           <p class="hero-lead">
-            Vive la emoción de deslizarte dentro de tubos cristalinos con <strong>física de olas realista</strong>. Recorre la playa a pie, supera los desafíos de los salvavidas, desbloquea nuevas tablas en las tiendas locales y surfea las 5 playas más icónicas del planeta.
+            Vive la emoción de deslizarte dentro de tubos cristalinos en el <strong>simulador y juego de surf (Surf Game & VR Simulator)</strong> con física de olas realista. Recorre la playa a pie, supera los desafíos de los salvavidas, desbloquea 7 tablas en las tiendas locales y surfea las 5 playas más icónicas del planeta.
           </p>
 
           <!-- Smart Mobile Device Recommendation Banner (auto-detected on iOS/Android) -->
@@ -469,8 +480,17 @@ import {
   </section>
 
   <footer class="footer">
-    <div class="container">
-      <p><strong>SurfVR</strong> — “Where you look is where you go.” · Todos los derechos reservados.</p>
+    <div class="container" style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <img
+        src="/assets/logos/surfvr_logo.webp"
+        alt="SurfVR Logo"
+        width="44"
+        height="44"
+        loading="lazy"
+        decoding="async"
+        style="border-radius:50%; border:1px solid rgba(56,189,248,0.3);"
+      />
+      <p><strong>SurfVR</strong> — “Where you look is where you go.” · Official Surf Game & VR Surf Simulator (<a href="https://surfvr.site/" style="color:var(--sea);">surfvr.site</a>).</p>
     </div>
   </footer>
 
@@ -815,23 +835,34 @@ import {
           }
         });
 
+        document.querySelectorAll("[data-coming-soon]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const name = btn.getAttribute("data-coming-soon");
+            toast(`⏳ ${name}: Coming soon... ¡Disponible muy pronto! Descárgalo hoy en Windows o Mac.`);
+          });
+        });
+
         const smartWrap = document.getElementById("smart-device-cta");
         const smartLink = document.getElementById("smart-device-link");
         const smartTitle = document.getElementById("smart-device-title");
         const smartBadge = document.getElementById("smart-device-badge");
         if (smartWrap && smartLink && smartTitle && smartBadge) {
-          if (/iPhone|iPad|iPod/i.test(ua)) {
+          if (/Macintosh|Mac OS X/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua)) {
             smartWrap.classList.add("visible");
-            smartLink.href = window.SURFVR_DOWNLOADS.iphone.url;
+            smartLink.href = window.SURFVR_DOWNLOADS.macos.url;
             smartLink.target = "_blank";
-            smartTitle.textContent = "SurfVR para iPhone & Visor VR";
-            smartBadge.textContent = "App Store →";
+            smartTitle.textContent = "SurfVR para macOS Universal (Apple Silicon & Intel)";
+            smartBadge.textContent = "Descargar .DMG →";
+          } else if (/iPhone|iPad|iPod/i.test(ua)) {
+            smartWrap.classList.add("visible");
+            smartLink.href = "#descargar";
+            smartTitle.textContent = "iPhone & Visor VR (Coming Soon...)";
+            smartBadge.textContent = "Ver PC / Mac ↓";
           } else if (/Android/i.test(ua)) {
             smartWrap.classList.add("visible");
-            smartLink.href = window.SURFVR_DOWNLOADS.android.url;
-            smartLink.setAttribute("download", window.SURFVR_DOWNLOADS.android.filename);
-            smartTitle.textContent = "SurfVR para Android (.APK)";
-            smartBadge.textContent = "Descargar .APK →";
+            smartLink.href = "#descargar";
+            smartTitle.textContent = "Android .APK (Coming Soon...)";
+            smartBadge.textContent = "Ver PC / Mac ↓";
           }
         }
 

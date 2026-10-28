@@ -7,9 +7,47 @@ interface Props {
 }
 
 const {
-  title = 'SurfVR — Siente el océano. Donde miras es hacia donde vas.',
-  description = 'Surfea olas con física realista en las 5 playas más famosas del mundo. Completa misiones en la playa, colecciona 7 tablas, personaliza a tu surfista y juega en PC, Mac, iPhone y Android.'
+  title = 'SurfVR — Surf Game & VR Surf Simulator | Juego de Surf Realista (PC & Mac)',
+  description = 'Juega SurfVR en surfvr.site — El juego de surf y simulador de surf (Surf Simulator & Surf VR) con física de olas realista en Pipeline, Nazaré, Teahupo\'o, Chicama y J-Bay. Descarga para Windows (x64 / ARM64) y macOS Universal (Intel & Apple Silicon).'
 } = Astro.props;
+
+const canonicalUrl = 'https://surfvr.site/';
+const ogImageUrl = 'https://surfvr.site/og-image.png';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'SurfVR',
+  alternateName: ['Surf VR', 'SurfVR Simulator', 'SurfVR — Where you look is where you go'],
+  url: canonicalUrl,
+  image: ogImageUrl,
+  description,
+  inLanguage: ['es', 'en'],
+  applicationCategory: 'Game',
+  genre: [
+    'Surf Game',
+    'Surf Simulator',
+    'Sports Simulation',
+    'VR Game',
+    'Juego de Surf',
+    'Simulador de Surf'
+  ],
+  keywords: 'surf game, juego surf, juego de surf, surf vr, surf simulator, simulador de surf, vr surf, surfing game pc, surfing game mac, pipeline, nazare, teahupoo, chicama',
+  operatingSystem: [
+    'Windows 10/11 (x64 & ARM64)',
+    'macOS Universal (Apple Silicon & Intel)',
+    'iOS (Coming Soon)',
+    'Android (Coming Soon)'
+  ],
+  playMode: 'SinglePlayer',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: canonicalUrl
+  }
+};
 ---
 
 <!DOCTYPE html>
@@ -18,14 +56,57 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#070D12" />
+
+    <!-- Primary SEO Meta Tags (surf game, juego surf, surf vr, surf simulator) -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="surf game, juego surf, juego de surf, surf vr, surf simulator, simulador de surf, vr surf game, surfing simulator pc, surf game mac, surfvr, olas realistas, pipeline surf, nazare surf, teahupoo, chicama, jeffreys bay"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="SurfVR" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Favicons & App Icons (New SurfVR Wave & Board Logo) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph / Facebook / Discord / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SurfVR — Official Surf Game & Simulator" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Flatten Network Dependency Tree & Accelerate LCP Discovery -->
     <link
       rel="preload"
       as="image"
       href="/assets/screenshots/barrel_ride.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/logos/surfvr_logo.webp"
       type="image/webp"
       fetchpriority="high"
     />
@@ -43,6 +124,9 @@ const {
       type="font/ttf"
       crossorigin="anonymous"
     />
+
+    <!-- Structured Data (Schema.org VideoGame) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <slot />

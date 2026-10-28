@@ -23,7 +23,7 @@ const { centered = false } = Astro.props;
         </div>
         <div class="dl-info">
           <span class="dl-small">Descargar para PC</span>
-          <span class="dl-name" data-win-primary-name>Windows</span>
+          <span class="dl-name" data-win-primary-name>Windows x64</span>
           <span class="dl-tag" data-win-primary-tag>.EXE · x64</span>
         </div>
       </a>
@@ -74,7 +74,7 @@ const { centered = false } = Astro.props;
     </div>
   </div>
 
-  <!-- 2. macOS (.DMG Directo) -->
+  <!-- 2. macOS Universal (.DMG Directo para Apple Silicon M1-M4 & Intel) -->
   <a
     href="https://drive.google.com/file/d/1Ft2yWVxC2QYtQHJuW-Ngish7bx2aAApS/view?usp=sharing"
     target="_blank"
@@ -89,18 +89,16 @@ const { centered = false } = Astro.props;
     </div>
     <div class="dl-info">
       <span class="dl-small">Descargar para Mac</span>
-      <span class="dl-name">macOS</span>
-      <span class="dl-tag">Instalador .DMG</span>
+      <span class="dl-name">macOS Universal</span>
+      <span class="dl-tag">.DMG · Apple Silicon & Intel</span>
     </div>
   </a>
 
-  <!-- 3. iPhone (App Store Logo) -->
-  <a
-    href="https://apps.apple.com/app/surfvr-ios"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="dl-card dl-apple"
-    data-download-platform="iphone"
+  <!-- 3. iPhone App Store (Coming Soon...) -->
+  <button
+    type="button"
+    class="dl-card dl-apple dl-coming-soon"
+    data-coming-soon="App Store (iPhone & Visor VR)"
   >
     <div class="dl-logo">
       <svg viewBox="0 0 24 24" fill="currentColor">
@@ -108,17 +106,17 @@ const { centered = false } = Astro.props;
       </svg>
     </div>
     <div class="dl-info">
-      <span class="dl-small">Download on the</span>
+      <span class="dl-small">iPhone & Visor VR</span>
       <span class="dl-name">App Store</span>
-      <span class="dl-tag">iPhone & Visor VR</span>
+      <span class="dl-tag dl-tag-soon">Coming soon...</span>
     </div>
-  </a>
+  </button>
 
-  <!-- 4. Android (Robot "Androidsito" + Available on Android + .APK) -->
-  <a
-    href="/downloads/SurfVR-Android.apk"
-    class="dl-card dl-apk"
-    data-download-platform="android"
+  <!-- 4. Android (Coming Soon...) -->
+  <button
+    type="button"
+    class="dl-card dl-apk dl-coming-soon"
+    data-coming-soon="Android (.APK)"
   >
     <div class="dl-logo">
       <svg viewBox="0 0 24 24" fill="currentColor">
@@ -126,9 +124,9 @@ const { centered = false } = Astro.props;
       </svg>
     </div>
     <div class="dl-info">
-      <span class="dl-small">Descarga Directa</span>
-      <span class="dl-name">Available on Android</span>
-      <span class="dl-tag">Instalador .APK</span>
+      <span class="dl-small">Mobile & Visor VR</span>
+      <span class="dl-name">Android</span>
+      <span class="dl-tag dl-tag-soon">Coming soon...</span>
     </div>
-  </a>
+  </button>
 </div>
