@@ -5,10 +5,10 @@
  */
 
 export const GAME_VERSION = {
-  version: 'v0.5.0',
-  date: '28 de Octubre, 2026',
-  label: 'Open Beta Oficial · v0.5.0',
-  quickSummary: 'Open Beta: casita de surf, duck dive y turtle roll bajo la espuma, reloj del día y códigos para amigos.'
+  version: 'v0.6.0',
+  date: '2 de Noviembre, 2026',
+  label: 'Multijugador · v0.6.0',
+  quickSummary: 'Llegó el Multijugador: surfea la misma ola con tus amigos. Además, Chicama y Nazaré reales, jetski y tablas nuevas.'
 };
 
 export interface ChangelogChange {
@@ -25,32 +25,45 @@ export interface ChangelogRelease {
   changes: ChangelogChange[];
 }
 
+export const MULTIPLAYER_HIGHLIGHT = {
+  image: '/assets/screenshots/multiplayer.jpg',
+  badge: '🌐 NUEVO · LA GRAN NOVEDAD',
+  title: 'Multijugador: surfea con tus amigos',
+  desc: 'Crea una sala en cualquier playa, comparte el código y surfeen la misma ola al mismo tiempo. Hasta 4 jugadores por sala.',
+  points: [
+    { icon: '🏖️', title: 'Crea o únete', text: 'Desde el botón Multiplayer del menú: crea tu sala o entra desde la lista o con un código.' },
+    { icon: '🌊', title: 'La misma ola, juntos', text: 'Reman al point y surfean la ola al mismo tiempo, en cualquier playa.' },
+    { icon: '👀', title: 'Ve a todos', text: 'Mira a tus amigos caminar, remar, surfear y manejar el jetski, con su tabla, su ropa y su nombre.' },
+    { icon: '🔗', title: 'Código fácil de compartir', text: 'Con Esc ves el código en grande y lo copias con un clic. Si sales, puedes volver a la misma sala.' }
+  ]
+};
+
 export const CHANGELOG: ChangelogRelease[] = [
   {
-    version: 'v0.5.0',
-    date: '28 Oct 2026',
-    title: 'Open Beta: casita de surf, duck dive y turtle roll, reloj del día y códigos para amigos',
+    version: 'v0.6.0',
+    date: '2 Nov 2026',
+    title: 'Multijugador: surfea la misma ola con tus amigos',
     isLatest: true,
     changes: [
       {
         type: 'wave',
-        badge: '🏄 Bajo la espuma',
-        text: 'El duck dive ahora hunde la tabla mucho más y te deja más tiempo bajo la ola. Con tablas de 7\' o más haces turtle roll: te volteas bajo la tabla y dejas pasar la espuma por encima.'
+        badge: '🌊 Playas reales',
+        text: 'Chicama y Nazaré ahora están sobre su costa real: una izquierda interminable y el pico gigante, con lancha para llegar al point. Remar para entrar a la ola funciona en todas las playas.'
       },
       {
         type: 'new',
-        badge: '🌊 Casita de surf y día que avanza',
-        text: 'Junto a cada tienda hay una casita donde cambias entre las tablas y la ropa que ya compraste. El día avanza mientras surfeas (una hora por minuto) con un reloj en pantalla, y en Free Surf eliges si empiezas al amanecer, a mediodía o al atardecer.'
+        badge: '🏄 Jetski y tablas nuevas',
+        text: 'Cada playa tiene un jetski para salir al lineup. Además llegan cinco tablas nuevas y Free Surf ahora empieza en la orilla.'
       },
       {
         type: 'new',
         badge: '✨ Para jugar mejor',
-        text: 'Los trucos repetidos se agrupan ("AIR 360 ×6"), la pantalla avisa cuánto resta la ayuda a tu puntuación y el nivel de ayuda se elige también desde el menú principal y se queda guardado. En primera persona puedes mirar alrededor manteniendo el clic derecho, y ahora hay códigos para regalar dinero a tus amigos.'
+        text: 'Tus misiones se guardan por playa con su progreso, los avisos aparecen de uno en uno y las olas entran más fluidas.'
       },
       {
         type: 'fix',
         badge: '🛠️ Arreglos',
-        text: 'La ola ya no revienta sobre la arena, la espuma llega hasta el final de la ola, la tabla no se hunde al remar, tu ropa se mantiene en el modo historia, las recompensas de misiones no se pierden, la puntuación es más justa y el guardado de tu progreso es más robusto. También hay mejoras en VR, en la cámara libre y en las playas.'
+        text: 'Tablas que se veían invisibles, la pausa en la lancha, tiendas que congelaban el juego y varios detalles en Chicama y Nazaré. Todo más pulido y rápido.'
       }
     ]
   }

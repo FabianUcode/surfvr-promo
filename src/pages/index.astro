@@ -5,6 +5,7 @@ import DownloadGrid from '../components/DownloadGrid.astro';
 import {
   GAME_VERSION,
   CHANGELOG,
+  MULTIPLAYER_HIGHLIGHT,
   HERO_SHOTS,
   HIGHLIGHTS,
   BEACHES,
@@ -121,11 +122,34 @@ import {
   <section id="novedades" class="section" style="padding-top:48px; padding-bottom:64px;">
     <div class="container">
       <div class="section-head" style="margin-bottom:32px;">
-        <div class="overline">OPEN BETA OFICIAL · ÚLTIMA ACTUALIZACIÓN {GAME_VERSION.version}</div>
+        <div class="overline">ÚLTIMA ACTUALIZACIÓN · {GAME_VERSION.version}</div>
         <h2 class="section-title">¿Qué hay de nuevo en SurfVR?</h2>
         <p class="section-desc">
-          SurfVR entra en beta abierta ({GAME_VERSION.version}): el juego está completo para jugar de principio a fin y seguimos puliéndolo con lo que nos cuenten.
+          La actualización {GAME_VERSION.version} trae la función que más pedían: ahora puedes surfear con tus amigos.
         </p>
+      </div>
+
+      <div class="mp-hero glass-card">
+        <div class="mp-media">
+          <img src={MULTIPLAYER_HIGHLIGHT.image} alt="Dos surfistas con sus tablas en la playa en una sala multijugador de SurfVR" loading="lazy" width="1600" height="1038" />
+          <span class="mp-room-chip">🌐 Sala · 2/4 jugadores</span>
+        </div>
+        <div class="mp-body">
+          <span class="mp-badge">{MULTIPLAYER_HIGHLIGHT.badge}</span>
+          <h3 class="mp-title">{MULTIPLAYER_HIGHLIGHT.title}</h3>
+          <p class="mp-desc">{MULTIPLAYER_HIGHLIGHT.desc}</p>
+          <div class="mp-points">
+            {MULTIPLAYER_HIGHLIGHT.points.map((pt) => (
+              <div class="mp-point">
+                <span class="mp-point-icon">{pt.icon}</span>
+                <div>
+                  <strong>{pt.title}</strong>
+                  <p>{pt.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div class="changelog-grid">
@@ -134,7 +158,7 @@ import {
             <div class="changelog-head">
               <div class="changelog-ver">
                 <span>{rel.version}</span>
-                {rel.isLatest && <span class="badge badge-mint">Open Beta Oficial</span>}
+                {rel.isLatest && <span class="badge badge-mint">Multijugador</span>}
               </div>
               <span style="font-size:0.75rem; font-weight:700; color:var(--text-tertiary);">{rel.date}</span>
             </div>
