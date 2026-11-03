@@ -139,6 +139,12 @@ export const DOWNLOADS: Record<string, DownloadPlatform> = {
 
 export const HERO_SHOTS = [
   {
+    src: '/assets/screenshots/multiplayer.jpg',
+    label: '¡Multijugador!',
+    topHud: '🌐 NUEVO · MULTIJUGADOR',
+    botHud: 'Surfea con tus amigos · Hasta 4 jugadores'
+  },
+  {
     src: '/assets/screenshots/barrel_ride.webp',
     label: 'Corriendo el Tubo',
     topHud: 'THIS WAVE · EXCELLENT 8.10',
@@ -362,10 +368,11 @@ export const SHOPS = [
 ];
 
 export const GALLERY_SHOTS = [
+  { src: '/assets/screenshots/multiplayer.jpg', label: 'Multijugador', caption: 'Multijugador: surfea con tus amigos en la misma playa' },
   { src: '/assets/screenshots/barrel_ride.webp', label: 'Corriendo el Tubo', caption: 'Dentro del tubo a 32 km/h' },
   { src: '/assets/screenshots/beach_selector.webp', label: 'Las 5 Playas Reales', caption: 'Selecciona entre las 5 playas reales del mundo' },
   { src: '/assets/screenshots/hop_missions.webp', label: 'Modo Campaña en la Playa', caption: 'Modo Campaña: camina hacia la torre del salvavidas' },
-  { src: '/assets/screenshots/board_picker.webp', label: 'Las 7 Tablas', caption: 'Showroom con las 7 tablas del juego' },
+  { src: '/assets/screenshots/board_picker.webp', label: 'Las Tablas', caption: 'Showroom con todas las tablas del juego' },
   { src: '/assets/screenshots/character_editor.webp', label: 'Editor de Surfista', caption: 'Editor completo de surfista y trajes' },
   { src: '/assets/screenshots/surf_shop.webp', label: 'Tiendas en la Playa', caption: 'Interior de la tienda North Shore Surf Shack' },
   { src: '/assets/screenshots/tricks_score.webp', label: 'Aéreos y Puntuación', caption: 'Aéreos 360 y calificación de olas' },

@@ -29,7 +29,7 @@ import {
           <div class="hero-top-pills">
             <a href="#novedades" class="hero-version-link">
               <span class="live-dot"></span>
-              <span>OPEN BETA OFICIAL · {GAME_VERSION.version} · VER NOVEDADES ↓</span>
+              <span>🌐 NUEVO: MULTIJUGADOR · {GAME_VERSION.version} · VER NOVEDADES ↓</span>
             </a>
             <span class="badge badge-aqua">WINDOWS & MAC · IOS & ANDROID COMING SOON</span>
           </div>
@@ -47,7 +47,7 @@ import {
           </div>
           <p class="hero-quote">“Where you look is where you go.”</p>
           <p class="hero-lead">
-            Vive la emoción de deslizarte dentro de tubos cristalinos en el <strong>simulador y juego de surf (Surf Game & VR Simulator)</strong> con física de olas realista. Recorre la playa a pie, supera los desafíos de los salvavidas, desbloquea 7 tablas en las tiendas locales y surfea las 5 playas más icónicas del planeta.
+            ¡Ahora puedes surfear con tus amigos! Entra a tubos cristalinos en el <strong>simulador y juego de surf (Surf Game & VR Simulator)</strong> con física de olas realista: crea una sala <strong>multijugador</strong>, comparte el código y compartan la misma ola. Recorre la playa a pie, cumple misiones, colecciona tablas y surfea las 5 playas más icónicas del planeta.
           </p>
 
           <!-- Smart Mobile Device Recommendation Banner (auto-detected on iOS/Android) -->
@@ -62,13 +62,13 @@ import {
           </div>
 
           <!-- ZONA DE DESCARGAS -->
-          <div class="dl-label">Descarga oficial Open Beta ({GAME_VERSION.version}) en tu plataforma</div>
+          <div class="dl-label">Descarga SurfVR {GAME_VERSION.version} y surfea con tus amigos</div>
           <DownloadGrid />
 
           <!-- Resumen rápido de la versión actual en la pantalla principal -->
           <div class="hero-patch-banner">
             <div style="font-size:0.8rem; color:var(--text-secondary); flex:1; min-width:200px;">
-              <strong style="color:#fff;">🏄 Open Beta {GAME_VERSION.version}:</strong> {GAME_VERSION.quickSummary}
+              <strong style="color:#fff;">🌐 Novedad {GAME_VERSION.version}:</strong> {GAME_VERSION.quickSummary}
             </div>
             <a href="#novedades" class="badge badge-aqua" style="flex-shrink:0;">Ver qué cambió →</a>
           </div>
@@ -80,7 +80,7 @@ import {
             <img
               id="hero-img"
               src={HERO_SHOTS[0].src}
-              alt="SurfVR en el tubo"
+              alt="SurfVR: surfistas en una sala multijugador"
               width="1280"
               height="720"
               fetchpriority="high"
@@ -236,7 +236,7 @@ import {
         <div class="overline">DOS GRANDES FORMAS DE JUGAR</div>
         <h2 class="section-title">Modo Campaña en la Playa y Modo Free Surf</h2>
         <p class="section-desc">
-          Vive la progresión completa caminando por la arena, cumpliendo misiones del salvavidas y comprando nuevas tablas, o entra directo al mar en sesión libre.
+          Vive la progresión completa caminando por la arena, cumpliendo misiones del salvavidas y comprando nuevas tablas, o entra directo al mar en sesión libre. ¡Y en cualquiera de las dos puedes invitar a tus amigos con el Multijugador!
         </p>
 
         <div class="mode-switcher-wrap" style="margin-top:22px;">
@@ -397,17 +397,17 @@ import {
   <section id="tablas" class="section">
     <div class="container">
       <div class="section-head">
-        <div class="overline">TU QUIVER DE 7 TABLAS</div>
+        <div class="overline">TU QUIVER · AHORA CON TABLAS NUEVAS</div>
         <h2 class="section-title">Una tabla para cada tipo de ola</h2>
         <p class="section-desc">
-          Comienza con tu <strong>Funboard</strong> gratuita y usa el dinero ganado en las misiones del salvavidas para coleccionar las 7 tablas en las tiendas de cada playa. Toca cada tabla para comparar su sensación en el agua:
+          Comienza con tu <strong>Funboard</strong> gratuita y usa el dinero ganado en las misiones del salvavidas para coleccionar todas las tablas en las tiendas de cada playa, incluyendo las recién llegadas. Toca cada tabla para comparar su sensación en el agua:
         </p>
       </div>
 
       <div class="quiver-grid">
         <div class="glass-sheet" style="display:flex; flex-direction:column; justify-content:space-between;">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-            <span class="badge badge-aqua">COLECCIÓN DE 7 MODELOS</span>
+            <span class="badge badge-aqua">COLECCIÓN COMPLETA</span>
             <div class="board-nav-arrows">
               <button class="board-arrow-btn" id="board-prev-btn" aria-label="Tabla anterior">‹</button>
               <button class="board-arrow-btn" id="board-next-btn" aria-label="Siguiente tabla">›</button>
@@ -423,7 +423,7 @@ import {
             width="960"
             height="540"
             style="border-radius:var(--r-l); border:1px solid var(--border-subtle); cursor:zoom-in;"
-            data-lightbox="Showroom de las 7 tablas sobre el agua"
+            data-lightbox="Showroom de tablas sobre el agua"
             loading="lazy"
             decoding="async"
           />
@@ -433,7 +433,7 @@ import {
         <div class="glass-sheet" style="display:flex; flex-direction:column; justify-content:space-between; gap:18px;">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span id="board-step" style="font-size:0.75rem; font-weight:800; color:var(--text-tertiary);">TABLA 1 DE 7</span>
+              <span id="board-step" style="font-size:0.75rem; font-weight:800; color:var(--text-tertiary);">TABLA 1</span>
               <span id="board-price-pill" class="badge badge-mint">GRATIS · INCLUIDA</span>
             </div>
             <h3 id="board-title" style="font-size:clamp(1.85rem, 4vw, 2.3rem); font-weight:800; line-height:1.08;">FUNBOARD</h3>
@@ -555,7 +555,7 @@ import {
         <span class="badge badge-aqua">¿LISTO PARA ENTRAR AL AGUA?</span>
         <h2 class="section-title" style="margin-top:12px;">Descarga SurfVR Hoy</h2>
         <p class="section-desc" style="max-width:650px; margin:0 auto 26px auto;">
-          Elige tu plataforma y comienza tu aventura en las olas:
+          Elige tu plataforma, llama a tus amigos y surfeen la misma ola 🤙
         </p>
 
         <DownloadGrid centered={true} />

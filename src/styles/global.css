@@ -388,7 +388,7 @@ button {
 .mp-badge {
   align-self: flex-start; padding: 4px 12px; border-radius: var(--r-full);
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em;
-  color: #04201c; background: linear-gradient(90deg, var(--sea-teal), var(--sea));
+  color: #04201c; background: linear-gradient(90deg, var(--sea-teal), var(--sea), var(--sea-teal));
 }
 .mp-title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; line-height: 1.15; color: #fff; }
 .mp-desc { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.5; }
@@ -401,6 +401,18 @@ button {
 .mp-point-icon { font-size: 1.35rem; line-height: 1.2; }
 .mp-point strong { display: block; color: #fff; font-size: 0.9rem; }
 .mp-point p { color: var(--text-secondary); font-size: 0.82rem; line-height: 1.45; margin: 2px 0 0; }
+
+
+.mp-badge { background-size: 200% 100%; animation: mp-shimmer 3.2s linear infinite; }
+@keyframes mp-shimmer { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+.mp-hero { transition: transform var(--trans), box-shadow var(--trans); }
+.mp-hero:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.35), 0 30px 70px -16px rgba(45, 212, 191, 0.4); }
+.mp-media img { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.mp-hero:hover .mp-media img { transform: scale(1.04); }
+.mp-media { overflow: hidden; }
+.mp-point { transition: transform var(--trans), background var(--trans); }
+.mp-point:hover { transform: translateX(4px); background: rgba(45, 212, 191, 0.1); }
+@media (prefers-reduced-motion: reduce) { .mp-badge { animation: none; } .mp-hero, .mp-hero:hover { transform: none; } }
 
 /* Changelog Section */
 .changelog-grid {

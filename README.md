@@ -7,7 +7,7 @@
 1. **Experiencia Nativa en Mobile**:
    - **Bottom App Dock (iOS / Android)** con *scroll-spy* automático (*Inicio, Campaña, Playas, Tablas, Descargar*) y soporte completo para `safe-area-inset`.
    - **Detección Inteligente de Dispositivo**: En iPhone/iPad o Android muestra automáticamente una tarjeta destacada recomendada para tu dispositivo, además de la cuadrícula compacta 2×2 de las 4 plataformas.
-   - **Carruseles Táctiles con `scroll-snap` e Indicadores**: Desliza horizontalmente las tarjetas de física de olas, las **5 playas reales** y el dock de las **7 tablas** directamente encima de la ficha de estadísticas.
+   - **Carruseles Táctiles con `scroll-snap` e Indicadores**: Desliza horizontalmente las tarjetas de física de olas, las **5 playas reales** y el dock de las **tablas** directamente encima de la ficha de estadísticas.
    - **Lightbox Táctil con Gestos Swipe**: Navega entre las capturas del juego deslizando con el dedo o con botones Anterior/Siguiente.
    - **Fondo Oceánico Fijo Optimizado para Safari iOS**: Evita el bug de `background-attachment: fixed` en iOS usando un lienzo fijo dedicado de 120Hz.
 2. **Arquitectura Modular en Astro**:
